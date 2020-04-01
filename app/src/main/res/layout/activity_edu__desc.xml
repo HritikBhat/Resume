@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Prg_Desc">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Institution Name:"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/edu_name"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="City:"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/edu_city"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Standard/Degree:"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/edu_deg"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From(Year):"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_marginLeft="15dp"
+                android:id="@+id/edu_from"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To(Year):"
+                android:layout_marginLeft="15dp"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_marginLeft="15dp"
+                android:id="@+id/edu_to"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type:"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:layout_marginLeft="15dp"
+                android:id="@+id/edu_spn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_marginLeft="15dp"
+                android:id="@+id/edu_cgpted"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/edudone_btn"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Done"
+                android:textSize="25dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

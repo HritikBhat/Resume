@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eduly"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="3"
+    tools:context=".Internship">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_weight="0.2"
+        android:gravity="bottom|end">
+
+        <Button
+            android:id="@+id/int_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/int_list"
+        android:layout_weight="2.6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:dividerHeight="10dp"
+        android:divider="@android:color/transparent"
+        android:layout_marginHorizontal="2dp">
+    </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/int_reset"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="RESET"
+            android:textSize="25dp"/>
+    </LinearLayout>
+
+</LinearLayout>
