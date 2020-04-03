@@ -56,7 +56,7 @@ public class Achievements extends Fragment {
             printListView(getActivity());
             view = inflater.inflate(R.layout.fragment_achievements, container, false);
             adapter = new MyListAdapter(getActivity(), desc,"ach");
-            list = (ListView) view.findViewById(R.id.list);
+            list = view.findViewById(R.id.list);
             list.setAdapter(adapter);
         }
         catch (Exception e){e.printStackTrace();}

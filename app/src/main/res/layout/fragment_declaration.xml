@@ -58,6 +58,7 @@
             android:gravity="bottom">
 
             <Button
+                android:id="@+id/print1"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="Print"

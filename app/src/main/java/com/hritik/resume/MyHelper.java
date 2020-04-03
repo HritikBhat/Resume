@@ -23,7 +23,7 @@ public class MyHelper extends SQLiteOpenHelper
             db.execSQL("create table edu(name text,city text,degree text,tfrom text,tto text,type text,grade text)");
             db.execSQL("create table intr(name text,city text,tfrom text,tto text,intr_desc text)");
             db.execSQL("create table exp(name text,city text,post text,tfrom text,tto text,exp_desc text)");
-            db.execSQL("create table psl(name text,addr text,phone text,dob text)");
+            db.execSQL("create table psl(name text,addr text,phone text,email text,dob text)");
 
 
             //db.execSQL("CREATE UNIQUE INDEX idx_category ON callmg(category);");

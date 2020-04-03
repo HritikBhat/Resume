@@ -52,7 +52,7 @@ public class Experience extends Fragment {
             printListView(getActivity());
             view = inflater.inflate(R.layout.fragment_experience, container, false);
             adapter = new ListAdapterEXP(getActivity(),name,city,post,year,descp);
-            list = (ListView) view.findViewById(R.id.exp_list);
+            list = view.findViewById(R.id.exp_list);
             list.setAdapter(adapter);
         }
         catch (Exception e){e.printStackTrace();}

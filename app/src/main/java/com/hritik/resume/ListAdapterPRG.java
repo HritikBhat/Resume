@@ -44,13 +44,13 @@ public class ListAdapterPRG extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.my_list_project, null,true);
         final View vw=view;
-        TextView nameText = (TextView) rowView.findViewById(R.id.name);
+        TextView nameText = rowView.findViewById(R.id.name);
         nameText.setText(names.get(position));
-        TextView techText = (TextView) rowView.findViewById(R.id.tech);
+        TextView techText = rowView.findViewById(R.id.tech);
         techText.setText(tech.get(position));
-        TextView descText = (TextView) rowView.findViewById(R.id.desc);
+        TextView descText = rowView.findViewById(R.id.desc);
         descText.setText(descp.get(position));
-        final ImageButton imagebtn = (ImageButton) rowView.findViewById(R.id.imgbtn);
+        final ImageButton imagebtn = rowView.findViewById(R.id.imgbtn);
         imagebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -51,7 +51,7 @@ public class Internship extends Fragment {
             printListView(getActivity());
             view = inflater.inflate(R.layout.fragment_internship, container, false);
             adapter = new ListAdapterINT(getActivity(),name,city,year,descp);
-            list = (ListView) view.findViewById(R.id.int_list);
+            list = view.findViewById(R.id.int_list);
             list.setAdapter(adapter);
         }
         catch (Exception e){e.printStackTrace();}

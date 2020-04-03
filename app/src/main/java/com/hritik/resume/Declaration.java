@@ -3,6 +3,7 @@ package com.hritik.resume;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -59,10 +60,18 @@ public class Declaration extends Fragment {
         ed=view.findViewById(R.id.ed_dec);
         ed.setText(printListView(getActivity()));
         done=view.findViewById(R.id.dn_btn);
+        print=view.findViewById(R.id.print1);
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateDec(getActivity());
+            }
+        });
+        print.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ct = new Intent(getActivity(), Selection.class);
+                startActivity(ct);
             }
         });
         return view;

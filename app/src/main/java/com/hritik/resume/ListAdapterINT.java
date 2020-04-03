@@ -44,12 +44,12 @@ public class ListAdapterINT extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.my_list_internship, null,true);
         final View vw=view;
-        TextView nameText = (TextView) rowView.findViewById(R.id.name);
+        TextView nameText = rowView.findViewById(R.id.name);
         nameText.setText(name.get(position)+", "+city.get(position));
-        TextView dtText = (TextView) rowView.findViewById(R.id.dt2);
+        TextView dtText = rowView.findViewById(R.id.dt2);
         dtText.setText(year.get(position));
 
-        final ImageButton imagebtn = (ImageButton) rowView.findViewById(R.id.imgbtn);
+        final ImageButton imagebtn = rowView.findViewById(R.id.imgbtn);
         imagebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

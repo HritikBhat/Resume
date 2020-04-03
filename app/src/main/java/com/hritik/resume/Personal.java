@@ -19,8 +19,8 @@ import android.widget.Toast;
 
 public class Personal extends Fragment {
     View view;
-    EditText name,addr,phn,dobe;
-    String nm,ph,ad,db;
+    EditText name,addr,phn,dobe,eml;
+    String nm,ph,ad,db,em;
     Button done;
 
     private Cursor printListView(Activity act) {
@@ -51,7 +51,8 @@ public class Personal extends Fragment {
         insertValues.put("name", name.getText().toString());
         insertValues.put("addr", addr.getText().toString());
         insertValues.put("phone", phn.getText().toString());
-        insertValues.put("dob", name.getText().toString());
+        insertValues.put("email", eml.getText().toString());
+        insertValues.put("dob", dobe.getText().toString());
         long rows =db.insert("psl", null, insertValues);
         Toast.makeText(act,"Saved!",Toast.LENGTH_LONG).show();
     }
@@ -65,6 +66,7 @@ public class Personal extends Fragment {
             nm=cursor.getString(cursor.getColumnIndex("name"));
             ad=cursor.getString(cursor.getColumnIndex("addr"));
             ph=cursor.getString(cursor.getColumnIndex("phone"));
+            em=cursor.getString(cursor.getColumnIndex("email"));
             db=cursor.getString(cursor.getColumnIndex("dob"));
         }
         else{
@@ -80,6 +82,8 @@ public class Personal extends Fragment {
         addr.setText(ad);
         phn=view.findViewById(R.id.psl_phone);
         phn.setText(ph);
+        eml=view.findViewById(R.id.psl_email);
+        eml.setText(em);
         dobe=view.findViewById(R.id.psl_dob);
         dobe.setText(db);
         done=view.findViewById(R.id.psldone_btn);

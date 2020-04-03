@@ -49,7 +49,7 @@ public class Skills extends Fragment {
             printListView(getActivity());
             view = inflater.inflate(R.layout.fragment_skills, container, false);
             adapter = new MyListAdapter(getActivity(), desc,"sk");
-            list = (ListView) view.findViewById(R.id.sk_list);
+            list = view.findViewById(R.id.sk_list);
             list.setAdapter(adapter);
         }
         catch (Exception e){e.printStackTrace();}

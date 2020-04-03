@@ -47,15 +47,15 @@ public class ListAdapterEDU extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.my_list_education, null,true);
         final View vw=view;
-        TextView nameText = (TextView) rowView.findViewById(R.id.name);
+        TextView nameText = rowView.findViewById(R.id.name);
         nameText.setText(name.get(position));
-        TextView ctdegText = (TextView) rowView.findViewById(R.id.ctdeg);
+        TextView ctdegText = rowView.findViewById(R.id.ctdeg);
         ctdegText.setText(city.get(position)+" - "+deg.get(position));
-        TextView dtText = (TextView) rowView.findViewById(R.id.dt);
+        TextView dtText = rowView.findViewById(R.id.dt);
         dtText.setText(year.get(position));
-        TextView ptcgText = (TextView) rowView.findViewById(R.id.ptcg);
+        TextView ptcgText = rowView.findViewById(R.id.ptcg);
         ptcgText.setText(ptcg.get(position));
-        final ImageButton imagebtn = (ImageButton) rowView.findViewById(R.id.imgbtn);
+        final ImageButton imagebtn = rowView.findViewById(R.id.imgbtn);
         imagebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

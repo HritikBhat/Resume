@@ -48,8 +48,8 @@ public class MyListAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.my_list, null,true);
         final View vw=view;
-        TextView descText = (TextView) rowView.findViewById(R.id.desc);
-        final ImageButton imagebtn = (ImageButton) rowView.findViewById(R.id.imgbtn);
+        TextView descText = rowView.findViewById(R.id.desc);
+        final ImageButton imagebtn = rowView.findViewById(R.id.imgbtn);
         descText.setText(descp.get(position));
         imagebtn.setOnClickListener(new View.OnClickListener() {
             @Override

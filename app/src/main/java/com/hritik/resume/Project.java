@@ -50,7 +50,7 @@ public class Project extends Fragment {
             printListView(getActivity());
             view = inflater.inflate(R.layout.fragment_project, container, false);
             adapter = new ListAdapterPRG(getActivity(), name, tech, desc);
-            list = (ListView) view.findViewById(R.id.prg_list);
+            list = view.findViewById(R.id.prg_list);
             list.setAdapter(adapter);
         }
         catch (Exception e){e.printStackTrace();}
