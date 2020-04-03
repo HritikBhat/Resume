@@ -303,6 +303,7 @@ public class Display extends AppCompatActivity {
     private String experience_Task(){
         String name,city,post,year,desc;String st="";
         Cursor cursor=getTabledata("exp");
+        //if (cursor.getCount()<1){return "";}
         //cursor.moveToFirst();
         while (cursor.moveToNext()) {
             //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
