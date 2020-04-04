@@ -157,6 +157,30 @@
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtcg"
+                android:text=" Out Of :"
+                android:textSize="18dp"
+                android:layout_marginRight="20dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:layout_marginLeft="15dp"
+                android:id="@+id/edu_outcg"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -172,6 +196,7 @@
                 android:background="@color/widgetsblue"
                 android:textSize="25dp"/>
         </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

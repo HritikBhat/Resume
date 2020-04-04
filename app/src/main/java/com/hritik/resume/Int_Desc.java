@@ -15,12 +15,29 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Int_Desc extends AppCompatActivity {
     EditText name,city,from,to,desc;
     String nam,cit,yr,dss;
     Button intr;
 
+    private Boolean isValid(){
+        if (Pattern.matches("[A-Za-z0-9\\s]+",from.getText().toString())!=true || Pattern.matches("[A-Za-z0-9\\s]+",to.getText().toString())!=true ){
+            Toast.makeText(getApplicationContext(),"Year is invalid in either section.",Toast.LENGTH_LONG).show();
+            return false;}
+
+        if (Pattern.matches("[A-Za-z0-9\\s]+$",name.getText().toString())!=true){
+            Toast.makeText(getApplicationContext(),"Enter company name properly.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (Pattern.matches("[A-Za-z,\\s]+",city.getText().toString())!=true){
+            Toast.makeText(getApplicationContext(),"Enter city name properly.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
+    }
     protected boolean getLengthStatus(){
         ArrayList<EditText> arr =new ArrayList<EditText>(Arrays.asList(name,city,from,to,desc));
         for(int i=0;i<arr.size();i++) {
@@ -60,10 +77,12 @@ public class Int_Desc extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(getLengthStatus()){
-                    register("intr");
-                    Intent ct=new Intent(getApplicationContext(),MainResume.class);
-                    ct.putExtra("num","3");
-                    startActivity(ct);
+                    if(isValid()) {
+                        register("intr");
+                        Intent ct = new Intent(getApplicationContext(), MainResume.class);
+                        ct.putExtra("num", "3");
+                        startActivity(ct);
+                    }
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Details are not filled",Toast.LENGTH_LONG).show();}

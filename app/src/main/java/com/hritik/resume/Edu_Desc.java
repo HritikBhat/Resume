@@ -7,22 +7,54 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Edu_Desc extends AppCompatActivity {
 
     String nam,cit,deg2,yr,tp,gd;
-    EditText name,city,deg,from,to,cgpt1;
+    TextView tt;
+    EditText name,city,deg,from,to,cgpt1,cgpt2;
     Spinner sp;
     Button edu;
 
+    private Boolean isValid(){
+
+        if(Integer.parseInt(to.getText().toString())<Integer.parseInt(from.getText().toString())){
+            Toast.makeText(getApplicationContext(),"Invalid year.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (Pattern.matches("[0-9]+",from.getText().toString())!=true || Pattern.matches("[0-9]+",to.getText().toString())!=true ){
+            Toast.makeText(getApplicationContext(),"Year is invalid in either section.",Toast.LENGTH_LONG).show();
+            return false;}
+
+        if (Pattern.matches("[A-Za-z0-9\\s]+$",name.getText().toString())!=true){
+            Toast.makeText(getApplicationContext(),"Enter institution name properly.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (Pattern.matches("[A-Za-z\\s]+",city.getText().toString())!=true){
+            Toast.makeText(getApplicationContext(),"Enter city name properly.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if ((int)(Double.parseDouble(cgpt1.getText().toString()))>100 && sp.getSelectedItem().toString().equalsIgnoreCase("percentage")){
+            Toast.makeText(getApplicationContext(),"Enter percentage properly.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (Double.parseDouble(cgpt1.getText().toString())>Double.parseDouble(cgpt2.getText().toString()) && sp.getSelectedItem().toString().equalsIgnoreCase("cgpa")){
+            Toast.makeText(getApplicationContext(),"Enter cgpa properly.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
     protected boolean getLengthStatus(){
         ArrayList<EditText> arr =new ArrayList<EditText>(Arrays.asList(name,city,deg,from,to,cgpt1));
         for(int i=0;i<arr.size();i++) {
@@ -31,6 +63,17 @@ public class Edu_Desc extends AppCompatActivity {
             }
         }
         return true;
+    }
+    private int getIndex(Spinner spinner, String myString){
+
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).equals(myString)){
+                index = i;
+            }
+        }
+        return index;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +87,10 @@ public class Edu_Desc extends AppCompatActivity {
         to=findViewById(R.id.edu_to);
         sp=findViewById(R.id.edu_spn);
         cgpt1=findViewById(R.id.edu_cgpted);
+        cgpt2=findViewById(R.id.edu_outcg);
+        tt=findViewById(R.id.txtcg);
+        tt.setVisibility(View.INVISIBLE);
+        cgpt2.setVisibility(View.INVISIBLE);
 
         ArrayList<String> categories = new ArrayList<String>();
         categories.add("Percentage");
@@ -64,8 +111,9 @@ public class Edu_Desc extends AppCompatActivity {
             deg.setText(deg2);
             from.setText(tofr[0].trim());
             to.setText(tofr[1].trim());
-            cgpt1.setText(gd);
-            if (tp.equalsIgnoreCase("cgpa")){sp.setSelection(1);}
+            if (tp.equalsIgnoreCase("percentage")){cgpt1.setText(gd);}
+           else{String[] cgp=gd.split("/");cgpt1.setText(cgp[0]);cgpt2.setText(cgp[1]);}
+            sp.setSelection(getIndex(sp, tp));
             edu.setText("Update");
             }
         // Creating adapter for spinner
@@ -76,16 +124,36 @@ public class Edu_Desc extends AppCompatActivity {
 
         // attaching data adapter to spinner
         sp.setAdapter(dataAdapter);
+        if (tp!=null){sp.setSelection(getIndex(sp, tp));}
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (sp.getSelectedItem().toString().equalsIgnoreCase("cgpa")){
+                    tt.setVisibility(View.VISIBLE);
+                    cgpt2.setVisibility(View.VISIBLE);
+                }
+                else{
+                    tt.setVisibility(View.INVISIBLE);
+                    cgpt2.setVisibility(View.INVISIBLE);
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         edu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(getLengthStatus()){
+                    if (isValid()){
                     register("edu");
                     Intent ct=new Intent(getApplicationContext(),MainResume.class);
                     ct.putExtra("num","4");
                     startActivity(ct);
+                }
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Details are not filled",Toast.LENGTH_LONG).show();}
@@ -100,6 +168,7 @@ public class Edu_Desc extends AppCompatActivity {
         String from1=from.getText().toString();
         String to1=to.getText().toString();
         if(nam!=null){
+            if (type.equalsIgnoreCase("cgpa")){per+="/"+cgpt2.getText().toString();}
             ContentValues contentValues = new ContentValues();
             contentValues.put("name", name.getText().toString());
             contentValues.put("city", city.getText().toString());
@@ -115,6 +184,7 @@ public class Edu_Desc extends AppCompatActivity {
         }
         else{
         if (type.equalsIgnoreCase("percentage")){per+="%";}
+        else if (type.equalsIgnoreCase("cgpa")){per+="/"+cgpt2.getText().toString();}
         ContentValues insertValues = new ContentValues();
         insertValues.put("name", name.getText().toString());
         insertValues.put("city", city.getText().toString());

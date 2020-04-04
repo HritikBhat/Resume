@@ -17,12 +17,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 public class Personal extends Fragment {
     View view;
     EditText name,addr,phn,dobe,eml;
     String nm,ph,ad,db,em;
     Button done;
 
+    private Boolean isValid(){
+
+        if (Pattern.matches("^[0-9]{2}[.][0-9]{2}[.][0-9]{2}$",dobe.getText().toString())!=true){
+            Toast.makeText(getActivity(),"Date should be in DD.MM.YY format.",Toast.LENGTH_LONG).show();
+            return false;}
+        if (Pattern.matches("^[0-9A-Za-z][0-9A-Za-z'.\"+$%_#*]{6,62}@[0-9A-Za-z.]{1,30}[.][A-Za-z]{1,5}$",eml.getText().toString())!=true){
+            Toast.makeText(getActivity(),"Email is not valid.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (Pattern.matches("^[A-Z]{1}[A-Za-z]+\\s[A-Za-z]+$",name.getText().toString())!=true){
+            Toast.makeText(getActivity(),"Enter full name properly.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
+    }
     private Cursor printListView(Activity act) {
         try {
             MyHelper dpHelper = new MyHelper(act);
@@ -45,16 +64,18 @@ public class Personal extends Fragment {
     private void updatePsl(Activity act) {
         MyHelper dpHelper = new MyHelper(act);
         SQLiteDatabase db = dpHelper.getReadableDatabase();
-        //To get cursor
-        db.execSQL("DELETE from psl");
-        ContentValues insertValues = new ContentValues();
-        insertValues.put("name", name.getText().toString());
-        insertValues.put("addr", addr.getText().toString());
-        insertValues.put("phone", phn.getText().toString());
-        insertValues.put("email", eml.getText().toString());
-        insertValues.put("dob", dobe.getText().toString());
-        long rows =db.insert("psl", null, insertValues);
-        Toast.makeText(act,"Saved!",Toast.LENGTH_LONG).show();
+        if(isValid()) {
+            //To get cursor
+            db.execSQL("DELETE from psl");
+            ContentValues insertValues = new ContentValues();
+            insertValues.put("name", name.getText().toString());
+            insertValues.put("addr", addr.getText().toString());
+            insertValues.put("phone", phn.getText().toString());
+            insertValues.put("email", eml.getText().toString());
+            insertValues.put("dob", dobe.getText().toString());
+            long rows = db.insert("psl", null, insertValues);
+            Toast.makeText(act, "Saved!", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
