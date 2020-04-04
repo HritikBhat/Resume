@@ -1,0 +1,34 @@
+li{
+    page-break-inside: avoid;
+}
+#point-header{
+  font-family: "Verdana";
+  margin-left: 50px;
+  font-size: 12px;
+}
+#point-single{
+  margin-bottom:5px;
+  font-size: 11px;
+}
+#point-desc{
+  font-family: "Verdana";
+  font-size: 11px;
+}
+#sub-header{
+  color: #1b365d;
+  font-family: "Verdana";
+  margin-left: 40px;
+  font-size: 15px;
+  font-weight: bold;
+}
+#name{
+  color: #1b365d;
+  font-family: "Verdana";
+  margin-top: 80px;
+  margin-left: 40px;
+}
+#addr,#phn,#dob,#obj-txt{
+  font-family: "Verdana";
+  margin-left: 40px;
+  font-size: 11px;
+}
