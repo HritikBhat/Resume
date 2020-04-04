@@ -35,7 +35,7 @@ public class Exp_Desc extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Enter company name properly.",Toast.LENGTH_LONG).show();
             return false;
         }
-        if (Pattern.matches("[A-Za-z\\s]+",city.getText().toString())!=true){
+        if (Pattern.matches("[A-Za-z(),\\s]+",city.getText().toString())!=true){
             Toast.makeText(getApplicationContext(),"Enter city name properly.",Toast.LENGTH_LONG).show();
             return false;
         }
