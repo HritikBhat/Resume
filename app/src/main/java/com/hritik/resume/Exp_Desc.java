@@ -27,7 +27,7 @@ public class Exp_Desc extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Invalid year in working period.",Toast.LENGTH_LONG).show();
             return false;
         }}
-        if (Pattern.matches("[0-9]+",from.getText().toString())!=true || Pattern.matches("[0-9]+",to.getText().toString())!=true ){
+        if (Pattern.matches("[0-9]+",from.getText().toString())!=true || (Pattern.matches("[0-9]+",to.getText().toString())!=true && to.getText().toString().equalsIgnoreCase("present")!=true) ){
             Toast.makeText(getApplicationContext(),"Year is invalid in either section.",Toast.LENGTH_LONG).show();
             return false;}
 
