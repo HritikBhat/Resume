@@ -14,49 +14,14 @@ import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
 import android.view.View;
 import android.webkit.DownloadListener;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class Display extends AppCompatActivity {
     WebView myWebView;
     int edu_count=0,prg_count=0,ach_count=0,sk_count=0,exp_count=0,intr_count=0;
     private String web_Start(){
-        String st_start="<html>\n" +
-                "<style>\n" +
-                "li{\n" +
-                "    page-break-inside: avoid;    \n" +
-                "}\n" +
-                "#point-header{\n" +
-                "  font-family: \"Verdana\";\n" +
-                "  margin-left: 50px;\n" +
-                "  font-size: 12px;\n" +
-                "}\n" +
-                "#point-single{\n" +
-                "  margin-bottom:5px;\n" +
-                "  font-size: 11px;\n" +
-                "}\n" +
-                "#point-desc{\n" +
-                "  font-family: \"Verdana\";\n" +
-                "  font-size: 11px;\n" +
-                "}\n" +
-                "#sub-header{\n" +
-                "  color: #1b365d;\n" +
-                "  font-family: \"Verdana\";\n" +
-                "  margin-left: 40px;\n" +
-                "  font-size: 15px;\n" +
-                "  font-weight: bold;\n" +
-                "}\n" +
-                "#name{\n" +
-                "  color: #1b365d;\n" +
-                "  font-family: \"Verdana\";\n" +
-                "  margin-top: 80px;\n" +
-                "  margin-left: 40px;\n" +
-                "}\n" +
-                "#addr,#phn,#dob,#obj-txt{\n" +
-                "  font-family: \"Verdana\";\n" +
-                "  margin-left: 40px;\n" +
-                "  font-size: 11px;\n" +
-                "}\n" +
-                "</style>";
+        String st_start="<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"sty.css\"/></head>";
         return st_start;
     }
 
@@ -334,8 +299,8 @@ public class Display extends AppCompatActivity {
         myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         myWebView.setScrollbarFadingEnabled(false);
-        String pert,objt,expt,intt,edut,prgt,acht,skt,dect;
-
+        String st,pert,objt,expt,intt,edut,prgt,acht,skt,dect;
+        st=web_Start();
         pert=personal_Task();
         objt=objective_Task();
         expt=experience_Task();
@@ -345,9 +310,9 @@ public class Display extends AppCompatActivity {
         acht=achievement_Task();
         skt=skill_Task();
         dect=declaration_Task();
-
-
-        myWebView.loadData((pert+objt+expt+intt+edut+prgt+acht+skt+dect), "text/html", "UTF-8");
+        String htmldata=(pert+objt+expt+intt+edut+prgt+acht+skt+dect);
+        htmldata=st+htmldata;
+        myWebView.loadDataWithBaseURL("file:///android_asset/", htmldata, "text/html", "UTF-8", null);
 
     }
     //create a function to create the print job
