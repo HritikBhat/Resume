@@ -1,6 +1,7 @@
 package com.hritik.resume;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -29,6 +30,20 @@ public class ListAdapterEXP extends ArrayAdapter<String> {
         this.post=post;
         this.year=year;
         this.descp=descp;
+    }
+    public void editOption(int pos){
+        Intent ct=new Intent(context,Exp_Desc.class);
+        String nam= name.get(pos);
+        String cit= city.get(pos);
+        String yr= year.get(pos);
+        String pst=post.get(pos);
+        String tp= descp.get(pos);
+        ct.putExtra("name",nam);
+        ct.putExtra("city",cit);
+        ct.putExtra("post",pst);
+        ct.putExtra("year",yr);
+        ct.putExtra("desc",tp);
+        context.startActivity(ct);
     }
     public void deleteOption(int pos){
         MyHelper dpHelper = new MyHelper(context);
@@ -72,6 +87,11 @@ public class ListAdapterEXP extends ArrayAdapter<String> {
                         {
                             deleteOption(pos);
                             Toast.makeText(getContext(),"Delete",Toast.LENGTH_LONG).show();
+                        }
+                        if(item.getTitle().toString().equalsIgnoreCase("edit"))
+                        {
+                            editOption(pos);
+                            Toast.makeText(getContext(),"Edit",Toast.LENGTH_LONG).show();
                         }
                         return true;
                     }

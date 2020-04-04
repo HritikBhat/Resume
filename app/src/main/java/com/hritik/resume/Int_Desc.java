@@ -18,6 +18,7 @@ import java.util.Arrays;
 
 public class Int_Desc extends AppCompatActivity {
     EditText name,city,from,to,desc;
+    String nam,cit,yr,dss;
     Button intr;
 
     protected boolean getLengthStatus(){
@@ -39,7 +40,22 @@ public class Int_Desc extends AppCompatActivity {
         from=findViewById(R.id.int_from);
         to=findViewById(R.id.int_to);
         desc=findViewById(R.id.int_desc);
-
+        Intent intt=getIntent();
+        Bundle bd=intt.getExtras();
+        if (bd!=null){
+            nam=bd.getString("name");
+            cit=bd.getString("city");
+            yr=bd.getString("year");
+            dss=bd.getString("desc");
+            String[] tofr=yr.split("-");
+            //Toast.makeText(getApplicationContext(),"Update",Toast.LENGTH_LONG).show();
+            name.setText(nam);
+            city.setText(cit);
+            from.setText(tofr[0].trim());
+            to.setText(tofr[1].trim());
+            desc.setText(dss);
+            intr.setText("Update");
+        }
         intr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +74,19 @@ public class Int_Desc extends AppCompatActivity {
         MyHelper dpHelper = new MyHelper(this);
         SQLiteDatabase db = dpHelper.getReadableDatabase();
         ContentValues insertValues = new ContentValues();
+        if(nam!=null){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("name", name.getText().toString());
+            contentValues.put("city", city.getText().toString());
+            contentValues.put("tfrom", from.getText().toString());
+            contentValues.put("tto",  to.getText().toString());
+            contentValues.put("intr_desc", desc.getText().toString());
+            String whereClause = "name =?";
+            String whereArgs[] = {nam};
+            db.update(table, contentValues, whereClause, whereArgs);
+            db.close();
+        }
+        else{
         insertValues.put("name", name.getText().toString());
         insertValues.put("city", city.getText().toString());
         insertValues.put("tfrom", from.getText().toString());
@@ -66,6 +95,6 @@ public class Int_Desc extends AppCompatActivity {
         long rows =db.insert(table, null, insertValues);
         System.out.println(rows);
         //Permission is being asked
-    }
+    }}
 }
 

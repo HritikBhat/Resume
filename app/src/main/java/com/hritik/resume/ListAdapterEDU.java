@@ -1,6 +1,7 @@
 package com.hritik.resume;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,11 +18,11 @@ import java.util.ArrayList;
 
 public class ListAdapterEDU extends ArrayAdapter<String> {
     private final Activity context;
-    private final ArrayList<String> name,city,deg,year,ptcg;
+    private final ArrayList<String> name,city,deg,year,ptcg,type1;
 
     private Activity act;
 
-    public ListAdapterEDU(Activity context, ArrayList<String> name, ArrayList<String> city, ArrayList<String> deg, ArrayList<String> year, ArrayList<String> ptcg) {
+    public ListAdapterEDU(Activity context, ArrayList<String> name, ArrayList<String> city, ArrayList<String> deg, ArrayList<String> year, ArrayList<String> ptcg,ArrayList<String> type1) {
         super(context, R.layout.my_list_education,name);
         // TODO Auto-generated constructor stub
 
@@ -30,7 +31,24 @@ public class ListAdapterEDU extends ArrayAdapter<String> {
         this.city=city;
         this.deg=deg;
         this.year=year;
+        this.type1=type1;
         this.ptcg=ptcg;
+    }
+    public void editOption(int pos){
+        Intent ct=new Intent(context,Edu_Desc.class);
+        String nam= name.get(pos);
+        String cit= city.get(pos);
+        String deg2= deg.get(pos);
+        String yr= year.get(pos);
+        String tp= type1.get(pos);
+        String gd= ptcg.get(pos);
+        ct.putExtra("name",nam);
+        ct.putExtra("city",cit);
+        ct.putExtra("deg",deg2);
+        ct.putExtra("year",yr);
+        ct.putExtra("tp",tp);
+        ct.putExtra("gd",gd);
+        context.startActivity(ct);
     }
     public void deleteOption(int pos){
         MyHelper dpHelper = new MyHelper(context);
@@ -74,6 +92,11 @@ public class ListAdapterEDU extends ArrayAdapter<String> {
                         {
                             deleteOption(pos);
                             Toast.makeText(getContext(),"Delete",Toast.LENGTH_LONG).show();
+                        }
+                        if(item.getTitle().toString().equalsIgnoreCase("edit"))
+                        {
+                            editOption(pos);
+                            Toast.makeText(getContext(),"Edit",Toast.LENGTH_LONG).show();
                         }
                         return true;
                     }

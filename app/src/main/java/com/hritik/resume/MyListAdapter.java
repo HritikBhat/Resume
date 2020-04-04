@@ -3,6 +3,7 @@ package com.hritik.resume;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,8 +24,6 @@ public class MyListAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private String cls;
     private final ArrayList<String> descp;
-    private ArrayList<String> objtxt;
-    private Activity act;
 
     public MyListAdapter(Activity context, ArrayList<String> descp,String cls) {
         super(context, R.layout.my_list, descp);
@@ -33,7 +32,6 @@ public class MyListAdapter extends ArrayAdapter<String> {
         this.context=context;
         this.descp=descp;
         this.cls=cls;
-        this.act=act;
 
     }
     public void deleteOption(int pos){
@@ -42,6 +40,20 @@ public class MyListAdapter extends ArrayAdapter<String> {
         dpHelper.onDeleteOne(cls,cls+"_desc",descp.get(pos));
         descp.remove(descp.get(pos));
         notifyDataSetChanged();
+    }
+    public void editOption(int pos){
+        Intent ct=new Intent(context,Ach_Desc.class);
+        if (cls.equalsIgnoreCase("sk")){
+            ct.putExtra("num","6");
+        }
+        else if(cls.equalsIgnoreCase("ach"))
+        {
+            ct.putExtra("num","7");
+        }
+        ct.putExtra("from",cls);
+        String des= descp.get(pos);
+        ct.putExtra("des",des);
+        context.startActivity(ct);
     }
 
     public View getView(final int position, View view, ViewGroup parent) {
@@ -69,6 +81,11 @@ public class MyListAdapter extends ArrayAdapter<String> {
                         {
                             deleteOption(pos);
                             Toast.makeText(getContext(),"Delete",Toast.LENGTH_LONG).show();
+                        }
+                        if(item.getTitle().toString().equalsIgnoreCase("edit"))
+                        {
+                            editOption(pos);
+                            Toast.makeText(getContext(),"Edit",Toast.LENGTH_LONG).show();
                         }
                         return true;
                     }

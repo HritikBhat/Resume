@@ -57,7 +57,7 @@ public class Education extends Fragment {
             ptcg = new ArrayList<String>();
             printListView(getActivity());
             view = inflater.inflate(R.layout.fragment_education, container, false);
-            adapter = new ListAdapterEDU(getActivity(),name,city,deg,year,ptcg);
+            adapter = new ListAdapterEDU(getActivity(),name,city,deg,year,ptcg,type1);
             list = view.findViewById(R.id.edu_list);
             list.setAdapter(adapter);
         }

@@ -18,6 +18,7 @@ import java.util.Arrays;
 
 public class Edu_Desc extends AppCompatActivity {
 
+    String nam,cit,deg2,yr,tp,gd;
     EditText name,city,deg,from,to,cgpt1;
     Spinner sp;
     Button edu;
@@ -47,7 +48,26 @@ public class Edu_Desc extends AppCompatActivity {
         ArrayList<String> categories = new ArrayList<String>();
         categories.add("Percentage");
         categories.add("CGPA");
-
+        Intent intt=getIntent();
+        Bundle bd=intt.getExtras();
+        if (bd!=null){
+            nam=bd.getString("name");
+            cit=bd.getString("city");
+            deg2=bd.getString("deg");
+            yr=bd.getString("year");
+            tp=bd.getString("tp");
+            gd=bd.getString("gd");
+            String[] tofr=yr.split("-");
+            //Toast.makeText(getApplicationContext(),"Update",Toast.LENGTH_LONG).show();
+            name.setText(nam);
+            city.setText(cit);
+            deg.setText(deg2);
+            from.setText(tofr[0].trim());
+            to.setText(tofr[1].trim());
+            cgpt1.setText(gd);
+            if (tp.equalsIgnoreCase("cgpa")){sp.setSelection(1);}
+            edu.setText("Update");
+            }
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
@@ -77,9 +97,24 @@ public class Edu_Desc extends AppCompatActivity {
         SQLiteDatabase db = dpHelper.getReadableDatabase();
         String type=sp.getSelectedItem().toString();
         String per=cgpt1.getText().toString();
-        if (type.equalsIgnoreCase("percentage")){per+="%";}
         String from1=from.getText().toString();
         String to1=to.getText().toString();
+        if(nam!=null){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("name", name.getText().toString());
+            contentValues.put("city", city.getText().toString());
+            contentValues.put("degree", deg.getText().toString());
+            contentValues.put("tfrom", from1);
+            contentValues.put("tto", to1);
+            contentValues.put("type", type);
+            contentValues.put("grade", per);
+            String whereClause = "name =?";
+            String whereArgs[] = {nam};
+            db.update(table, contentValues, whereClause, whereArgs);
+            db.close();
+        }
+        else{
+        if (type.equalsIgnoreCase("percentage")){per+="%";}
         ContentValues insertValues = new ContentValues();
         insertValues.put("name", name.getText().toString());
         insertValues.put("city", city.getText().toString());
@@ -91,5 +126,6 @@ public class Edu_Desc extends AppCompatActivity {
         long rows =db.insert(table, null, insertValues);
         System.out.println(rows);
         //Permission is being asked
+        }
     }
 }

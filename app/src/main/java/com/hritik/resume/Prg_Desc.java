@@ -15,6 +15,7 @@ public class Prg_Desc extends AppCompatActivity {
 
     EditText name,tech,desc;
     Button prg;
+    String nam,tch,des;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,19 @@ public class Prg_Desc extends AppCompatActivity {
         tech=findViewById(R.id.prg_tech);
         desc=findViewById(R.id.prg_desc);
 
+        Intent intt=getIntent();
+        Bundle bd=intt.getExtras();
+        if (bd!=null){
+        nam=bd.getString("name");
+        tch=bd.getString("tech");
+        des=bd.getString("desc");
+        if(des!=null && tch!=null && nam!=null){
+            //Toast.makeText(getApplicationContext(),"Update",Toast.LENGTH_LONG).show();
+            name.setText(nam);
+            tech.setText(tch);
+            desc.setText(des);
+            prg.setText("Update");
+        }}
         prg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +56,17 @@ public class Prg_Desc extends AppCompatActivity {
     private void register(String table){
         MyHelper dpHelper = new MyHelper(this);
         SQLiteDatabase db = dpHelper.getReadableDatabase();
+        if(des!=null){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("name", name.getText().toString());
+            contentValues.put("tech", tech.getText().toString());
+            contentValues.put("prg_desc", desc.getText().toString());
+            String whereClause = table + "_desc =?";
+            String whereArgs[] = {des};
+            db.update(table, contentValues, whereClause, whereArgs);
+            db.close();
+        }
+        else{
         ContentValues insertValues = new ContentValues();
         insertValues.put("name", name.getText().toString());
         insertValues.put("tech", tech.getText().toString());
@@ -49,5 +74,6 @@ public class Prg_Desc extends AppCompatActivity {
         long rows =db.insert(table, null, insertValues);
         System.out.println(rows);
         //Permission is being asked
+        }
     }
 }
