@@ -17,22 +17,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:textSize="15dp"/>
+            android:textColor="#141313"
+            android:textSize="15dp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/ctdeg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#141313"
             android:layout_marginBottom="5dp"
             android:textSize="15dp"/>
         <TextView
             android:id="@+id/dt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#141313"
             android:textSize="15dp"/>
         <TextView
             android:id="@+id/ptcg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#141313"
             android:textSize="15dp"/>
 
     </LinearLayout>
@@ -46,6 +51,7 @@
             android:id="@+id/imgbtn"
             android:layout_width="35dp"
             android:layout_height="30dp"
+            android:background="@color/widgetsblue"
             android:src="@drawable/ic_menu_opt" />
     </LinearLayout>
 

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Ach_Desc extends AppCompatActivity {
 
@@ -47,6 +48,8 @@ public class Ach_Desc extends AppCompatActivity {
                     ct.putExtra("num",no);
                     startActivity(ct);
                 }
+                else{
+                    Toast.makeText(getApplicationContext(),"Details are not filled",Toast.LENGTH_LONG).show();}
             }
         });
     }

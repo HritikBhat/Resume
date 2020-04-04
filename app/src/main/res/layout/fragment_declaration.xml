@@ -46,7 +46,9 @@
             <Button
                 android:id="@+id/dn_btn"
                 android:layout_width="350dp"
-                android:text="Done"
+                android:text="Save"
+                android:textColor="@color/whitecol"
+                android:background="@color/widgetsblue"
                 android:layout_height="wrap_content"
                 android:textSize="25dp" />
         </LinearLayout>
@@ -62,6 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="Print"
+                android:textColor="@color/whitecol"
+                android:background="@color/widgetsblue"
                 android:textSize="25dp"/>
         </LinearLayout>
 

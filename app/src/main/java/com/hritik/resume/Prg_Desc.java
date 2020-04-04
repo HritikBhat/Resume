@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Prg_Desc extends AppCompatActivity {
 
@@ -33,6 +34,8 @@ public class Prg_Desc extends AppCompatActivity {
                     ct.putExtra("num","5");
                     startActivity(ct);
                 }
+                else{
+                    Toast.makeText(getApplicationContext(),"Details are not filled",Toast.LENGTH_LONG).show();}
             }
         });
     }

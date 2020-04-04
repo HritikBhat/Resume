@@ -15,7 +15,9 @@
         <TextView
             android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#141313"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -28,6 +30,7 @@
             android:id="@+id/imgbtn"
             android:layout_width="35dp"
             android:layout_height="30dp"
+            android:background="@color/widgetsblue"
             android:src="@drawable/ic_menu_opt" />
     </LinearLayout>
 

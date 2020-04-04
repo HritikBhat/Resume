@@ -49,6 +49,8 @@
                 android:id="@+id/obj_sv_btn"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:textColor="@color/whitecol"
+                android:background="@color/widgetsblue"
                 android:text="SAVE"
                 android:textSize="25dp"/>
         </LinearLayout>

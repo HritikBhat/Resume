@@ -102,6 +102,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:text="Done"
+                    android:textColor="@color/whitecol"
+                    android:background="@color/widgetsblue"
                     android:textSize="25dp"/>
             </LinearLayout>
         </LinearLayout>
