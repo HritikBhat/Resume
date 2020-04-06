@@ -219,7 +219,11 @@ public class Display2 extends AppCompatActivity {
                 "          <div class=\"ob-right\">\n" +
                 "              <p id=\"obpara\">\n" +
                 desc +
-                "              </p>";
+                "              </p>"+"</div>\n" +
+                "       </div>\n" +
+                "       <br>\n" +
+                "</body>\n" +
+                "</html>";
         return dc;
     }
 
@@ -315,7 +319,7 @@ public class Display2 extends AppCompatActivity {
                 tech = cursor.getString(cursor.getColumnIndex("tech"));
                 desc = cursor.getString(cursor.getColumnIndex("prg_desc"));
                 st += web_Project(name, tech, desc);
-                if (i != count) {
+                if (i != count && count!=1) {
                     st += "<hr id=\"small-hr\">\n" +
                             "      <br>";
                 }
@@ -348,7 +352,7 @@ public class Display2 extends AppCompatActivity {
                 type1 = cursor.getString(cursor.getColumnIndex("type"));
                 ptcg = cursor.getString(cursor.getColumnIndex("grade"));
                 st += web_Education(name, city, deg, year, type1, ptcg);
-                if (i != count) {
+                if (i != count && count!=1) {
                     st += "<hr id=\"small-hr\">\n" +
                             "      <br>";
                 }
@@ -380,7 +384,7 @@ public class Display2 extends AppCompatActivity {
                 year = cursor.getString(cursor.getColumnIndex("tfrom")) + " - " + cursor.getString(cursor.getColumnIndex("tto"));
                 desc = cursor.getString(cursor.getColumnIndex("intr_desc"));
                 st += web_Internship(name, city, year, desc);
-                if (i != count) {
+                if (i != count && count!=1) {
                     st += "<hr id=\"small-hr\">\n" +
                             "      <br>";
                 }
@@ -414,7 +418,7 @@ public class Display2 extends AppCompatActivity {
                 year = cursor.getString(cursor.getColumnIndex("tfrom")) + " - " + cursor.getString(cursor.getColumnIndex("tto"));
                 desc = cursor.getString(cursor.getColumnIndex("exp_desc"));
                 st += web_Experience(name, city, post, year, desc);
-                if (i != count) {
+                if (i != count && count!=1) {
                     st += "<hr id=\"small-hr\">\n" +
                             "      <br>";
                 }
