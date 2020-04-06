@@ -261,145 +261,175 @@ public class Display2 extends AppCompatActivity {
     private String achievement_Task(){
         String desc;String st="";
         Cursor cursor=getTabledata("ach");
-        //cursor.moveToFirst();
-        while (cursor.moveToNext()) {
-            //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
-            desc=cursor.getString(cursor.getColumnIndex("ach_desc"));
-            st+=web_Achievement(desc);
+        if (cursor!=null || cursor.getCount()!=0) {
+            //cursor.moveToFirst();
+            while (cursor.moveToNext()) {
+                //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+                desc = cursor.getString(cursor.getColumnIndex("ach_desc"));
+                st += web_Achievement(desc);
+            }
+            cursor.close();
+            st += "            </ul>\n" +
+                    "        </div>\n" +
+                    "     </div>\n" +
+                    "     <hr>\n" +
+                    "     <br>";
+            return st;
         }
-        cursor.close();
-        st+="            </ul>\n" +
-                "        </div>\n" +
-                "     </div>\n" +
-                "     <hr>\n" +
-                "     <br>";
-        return st;
+        else
+        {
+            return "";
+        }
     }
     private String skill_Task(){
         String desc;String st="";
         Cursor cursor=getTabledata("sk");
         //cursor.moveToFirst();
-        while (cursor.moveToNext()) {
-            //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
-            desc=cursor.getString(cursor.getColumnIndex("sk_desc"));
-            st+=web_Skill(desc);
+        if (cursor!=null || cursor.getCount()!=0) {
+            while (cursor.moveToNext()) {
+                //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+                desc = cursor.getString(cursor.getColumnIndex("sk_desc"));
+                st += web_Skill(desc);
+            }
+            cursor.close();
+            st += "            </ul>\n" +
+                    "        </div>\n" +
+                    "     </div>\n" +
+                    "     <hr>\n" +
+                    "     <br>";
+            return st;
         }
-        cursor.close();
-        st+="            </ul>\n" +
-                "        </div>\n" +
-                "     </div>\n" +
-                "     <hr>\n" +
-                "     <br>";
-        return st;
+        else
+        {return "";}
     }
 
     private String project_Task(){
         String name,tech,desc;String st="";
         Cursor cursor=getTabledata("prg");
         //cursor.moveToFirst();
-        int count=cursor.getCount();
-        for (int i=1;i<=count;i++){
-            cursor.moveToNext();
-            name=cursor.getString(cursor.getColumnIndex("name"));
-            tech=cursor.getString(cursor.getColumnIndex("tech"));
-            desc=cursor.getString(cursor.getColumnIndex("prg_desc"));
-            st+=web_Project(name,tech,desc);
-            if (i!=count){
-                st+="<hr id=\"small-hr\">\n" +
-                        "      <br>";
+        if (cursor!=null || cursor.getCount()!=0) {
+            int count = cursor.getCount();
+            for (int i = 1; i <= count; i++) {
+                cursor.moveToNext();
+                name = cursor.getString(cursor.getColumnIndex("name"));
+                tech = cursor.getString(cursor.getColumnIndex("tech"));
+                desc = cursor.getString(cursor.getColumnIndex("prg_desc"));
+                st += web_Project(name, tech, desc);
+                if (i != count) {
+                    st += "<hr id=\"small-hr\">\n" +
+                            "      <br>";
+                }
             }
+            cursor.close();
+            st += "</div>\n" +
+                    "  </div>\n" +
+                    "  <br>\n" +
+                    "  <hr>\n" +
+                    "     <br>";
+            return st;
         }
-        cursor.close();
-        st+="</div>\n" +
-                "  </div>\n" +
-                "  <br>\n" +
-                "  <hr>\n" +
-                "     <br>";
-        return st;
+        else{
+            return "";
+        }
     }
 
     private String education_Task(){
         String name,city,deg,year,type1,ptcg;String st="";
         Cursor cursor=getTabledata("edu");
-        int count=cursor.getCount();
-        for (int i=1;i<=count;i++){
-            cursor.moveToNext();
-            //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
-            name=cursor.getString(cursor.getColumnIndex("name"));
-            city=cursor.getString(cursor.getColumnIndex("city"));
-            deg=cursor.getString(cursor.getColumnIndex("degree"));
-            year=cursor.getString(cursor.getColumnIndex("tfrom"))+" - "+cursor.getString(cursor.getColumnIndex("tto"));
-            type1=cursor.getString(cursor.getColumnIndex("type"));
-            ptcg=cursor.getString(cursor.getColumnIndex("grade"));
-            st+=web_Education(name,city,deg,year,type1,ptcg);
-            if (i!=count){
-                st+="<hr id=\"small-hr\">\n" +
-                        "      <br>";
+        if (cursor!=null || cursor.getCount()!=0) {
+            int count = cursor.getCount();
+            for (int i = 1; i <= count; i++) {
+                cursor.moveToNext();
+                //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+                name = cursor.getString(cursor.getColumnIndex("name"));
+                city = cursor.getString(cursor.getColumnIndex("city"));
+                deg = cursor.getString(cursor.getColumnIndex("degree"));
+                year = cursor.getString(cursor.getColumnIndex("tfrom")) + " - " + cursor.getString(cursor.getColumnIndex("tto"));
+                type1 = cursor.getString(cursor.getColumnIndex("type"));
+                ptcg = cursor.getString(cursor.getColumnIndex("grade"));
+                st += web_Education(name, city, deg, year, type1, ptcg);
+                if (i != count) {
+                    st += "<hr id=\"small-hr\">\n" +
+                            "      <br>";
+                }
             }
+            cursor.close();
+            st += "</div>\n" +
+                    "  </div>\n" +
+                    "  <br>\n" +
+                    "  <hr>\n" +
+                    "     <br>";
+            return st;
         }
-        cursor.close();
-        st+="</div>\n" +
-                "  </div>\n" +
-                "  <br>\n" +
-                "  <hr>\n" +
-                "     <br>";
-        return st;
+        else{
+            return "";
+        }
     }
 
     private String internship_Task(){
         String name,city,year,desc;String st="";
         Cursor cursor=getTabledata("intr");
-        //cursor.moveToFirst();
-        int count=cursor.getCount();
-        for (int i=1;i<=count;i++){
-            cursor.moveToNext();
-            //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
-            name=cursor.getString(cursor.getColumnIndex("name"));
-            city=cursor.getString(cursor.getColumnIndex("city"));
-            year=cursor.getString(cursor.getColumnIndex("tfrom"))+" - "+cursor.getString(cursor.getColumnIndex("tto"));
-            desc=cursor.getString(cursor.getColumnIndex("intr_desc"));
-            st+=web_Internship(name,city,year,desc);
-            if (i!=count){
-                st+="<hr id=\"small-hr\">\n" +
-                        "      <br>";
+        if (cursor!=null || cursor.getCount()!=0) {
+            //cursor.moveToFirst();
+            int count = cursor.getCount();
+            for (int i = 1; i <= count; i++) {
+                cursor.moveToNext();
+                //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+                name = cursor.getString(cursor.getColumnIndex("name"));
+                city = cursor.getString(cursor.getColumnIndex("city"));
+                year = cursor.getString(cursor.getColumnIndex("tfrom")) + " - " + cursor.getString(cursor.getColumnIndex("tto"));
+                desc = cursor.getString(cursor.getColumnIndex("intr_desc"));
+                st += web_Internship(name, city, year, desc);
+                if (i != count) {
+                    st += "<hr id=\"small-hr\">\n" +
+                            "      <br>";
+                }
             }
+            cursor.close();
+            st += "</div>\n" +
+                    "  </div>\n" +
+                    "<br>\n" +
+                    "<hr>\n" +
+                    "  <br>";
+            return st;
         }
-        cursor.close();
-        st+="</div>\n" +
-                "  </div>\n" +
-                "<br>\n" +
-                "<hr>\n" +
-                "  <br>";
-        return st;
+        else{
+            return "";
+        }
     }
 
     private String experience_Task(){
         String name,city,post,year,desc;String st="";
         Cursor cursor=getTabledata("exp");
-        //if (cursor.getCount()<1){return "";}
-        //cursor.moveToFirst();
-        int count=cursor.getCount();
-        for (int i=1;i<=count;i++){
-            cursor.moveToNext();
-            //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
-            name=cursor.getString(cursor.getColumnIndex("name"));
-            city=cursor.getString(cursor.getColumnIndex("city"));
-            post=cursor.getString(cursor.getColumnIndex("post"));
-            year=cursor.getString(cursor.getColumnIndex("tfrom"))+" - "+cursor.getString(cursor.getColumnIndex("tto"));
-            desc=cursor.getString(cursor.getColumnIndex("exp_desc"));
-            st+=web_Experience(name,city,post,year,desc);
-            if (i!=count){
-                st+="<hr id=\"small-hr\">\n" +
-                        "      <br>";
+        if(cursor!=null || cursor.getCount()!=0) {
+            //if (cursor.getCount()<1){return "";}
+            //cursor.moveToFirst();
+            int count = cursor.getCount();
+            for (int i = 1; i <= count; i++) {
+                cursor.moveToNext();
+                //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+                name = cursor.getString(cursor.getColumnIndex("name"));
+                city = cursor.getString(cursor.getColumnIndex("city"));
+                post = cursor.getString(cursor.getColumnIndex("post"));
+                year = cursor.getString(cursor.getColumnIndex("tfrom")) + " - " + cursor.getString(cursor.getColumnIndex("tto"));
+                desc = cursor.getString(cursor.getColumnIndex("exp_desc"));
+                st += web_Experience(name, city, post, year, desc);
+                if (i != count) {
+                    st += "<hr id=\"small-hr\">\n" +
+                            "      <br>";
+                }
             }
+            cursor.close();
+            st += "</div>\n" +
+                    "  </div>\n" +
+                    "<br>\n" +
+                    "<hr>\n" +
+                    "  <br>";
+            return st;
         }
-        cursor.close();
-        st+="</div>\n" +
-                "  </div>\n" +
-                "<br>\n" +
-                "<hr>\n" +
-                "  <br>";
-        return st;
+        else{
+            return "";
+        }
     }
 
 
