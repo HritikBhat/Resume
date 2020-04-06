@@ -18,29 +18,46 @@ import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public class Display extends AppCompatActivity {
+public class Display2 extends AppCompatActivity {
     WebView myWebView;
     int edu_count=0,prg_count=0,ach_count=0,sk_count=0,exp_count=0,intr_count=0;
     private String web_Start(){
-        String st_start="<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"sty.css\"/></head>";
+        String st_start="<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"sty2.css\"/></head>";
         return st_start;
     }
 
     private String web_Personal(String name,String addr,String phone,String email,String dob){
         String ps="<body>\n" +
-                "<h1 id=\"name\">"+name+"</h1>\n" +
-                "<p id=\"addr\">"+addr+",</p>\n" +
-                "<p id=\"phn\">"+phone+","+email+"</p>\n" +
-                "<p id=\"dob\">DOB-"+dob+"</p>\n" +
-                "<br>";
+                "    <div class=\"header\">\n" +
+                "        <div class=\"hd-left\">\n" +
+                "            "+name+"\n" +
+                "            <p id=\"addr\">"+addr+"<br>\n" +
+                "            DOB-"+dob+"</p>\n" +
+                "        </div>\n" +
+                "        <div class=\"hd-right\">\n" +
+                "            "+email+"<br>Phone: "+phone+"\n" +
+                "        </div>\n" +
+                "     </div>\n" +
+                "     <hr>\n" +
+                "     <br>";
 
         return ps;
     }
 
     private String web_Objective(String obj){
-        String ob="<p id=\"sub-header\">OBJECTIVE</p>\n" +
-                "<p id=\"obj-txt\">"+obj+"</p>\n" +
-                "<br>";
+        String ob="<div class=\"objective\">\n" +
+                "        <div class=\"ob-left\" >\n" +
+                "            Objective\n" +
+                "        </div>\n" +
+                "        <div class=\"ob-right\">\n" +
+                "            <p id=\"obpara\">\n" + obj +
+                "            </p>\n" +
+                "        </div>\n" +
+                "     </div>\n" +
+                "     <br>\n" +
+                "     <hr>\n" +
+                "        <br>";
+
         return ob;
     }
 
@@ -48,16 +65,24 @@ public class Display extends AppCompatActivity {
     private String web_Internship(String name,String city,String year,String desc){
         String intr;String hd="";
         if (intr_count==0){
-            hd="<p id=\"sub-header\">INTERNSHIP</p>\n" +
-                    "<ul id=\"point-header\">";
+            hd="<div class=\"internship\">\n" +
+                    "    <div class=\"ep-left\">\n" +
+                    "      Internship\n" +
+                    "    </div>"+"<div class=\"ep-right\">\n";
             intr_count+=1;
         }
-        intr=hd+"<li><b>"+name+"</b>,"+city+",("+year+")<br><br>\n" +
-                "\t<ul id=\"point-desc\">\n" +
-                "  \t\t<li id=\"point-single\">"+desc+"<br>\n" +
-                "  \t\t</li>\n" +
-                "\t</ul>\n" +
-                "  </li><br>";
+        intr=hd+
+                "            <div class=\"ep-row\">\n" +
+                "              <div class=\"epsub-left\">\n" +
+                "                <p id=\"company-name\">"+name+","+city+"</p><br>\n" +
+                "                <!--<p id=\"post\">Executive Manager</p>-->\n" +
+                "                <p id=\"eppara\">\n" + desc+
+                "                </p><br><br><br>\n" +
+                "              </div>\n" +
+                "              <div class=\"epsub-right\">\n" +
+                "                <p id=\"epDate\">"+year+"</p>\n" +
+                "              </div>\n" +
+                "            </div>";
         return intr;
 
     }
@@ -66,18 +91,24 @@ public class Display extends AppCompatActivity {
     private String web_Experience(String name,String city,String post,String year,String desc){
         String ep;String hd="";
         if (exp_count==0){
-            hd="<p id=\"sub-header\">PROFESSIONAL EXPERIENCE</p>\n" +
-                    "<ul id=\"point-header\">";
+            hd="<div class=\"experience\">\n" +
+                    "    <div class=\"ep-left\">\n" +
+                    "      Experience\n" +
+                    "    </div>"+"<div class=\"ep-right\">\n" ;
             exp_count+=1;
         }
-        ep=hd + "  <li><b>"+name+"</b>, "+city+"<br>\n" +
-                "\t <b>"+post+" ("+year+")</b><br><br>\n" +
-                "\t<ul id=\"point-desc\">\n" +
-                "  \t\t<li id=\"point-single\">"+desc+"<br>\n" +
-                "  \t\t</li>\n" +
-                "\t</ul>\n" +
-                "  </li>\n" +
-                "  <br>";
+        ep=hd+
+                "      <div class=\"ep-row\">\n" +
+                "        <div class=\"epsub-left\">\n" +
+                "          <p id=\"company-name\">"+name+","+city+"</p><br>\n" +
+                "          <p id=\"post\">"+post+"</p>\n" +
+                "          <p id=\"eppara\">\n" + desc+
+                "          </p><br><br><br>\n" +
+                "        </div>\n" +
+                "        <div class=\"epsub-right\">\n" +
+                "          <p id=\"epDate\">"+year+"</p>\n" +
+                "        </div>\n" +
+                "      </div>";
         return ep;
     }
 
@@ -85,21 +116,35 @@ public class Display extends AppCompatActivity {
     private String web_Education(String name,String city,String degree,String year,String type,String grade){
         String ed;String hd="";
         if (edu_count==0){
-            hd="<p id=\"sub-header\">EDUCATION</p>\n" +
-                    "<ul id=\"point-header\">";
+            hd="<div class=\"education\">\n" +
+                    "      <div class=\"ed-left\">\n" +
+                    "        Education\n" +
+                    "      </div>"+"<div class=\"ed-right\">\n";
             edu_count+=1;
         }
         if (type.equalsIgnoreCase("percentage")){
-            ed=hd+"<li><b>"+name+"</b><br>\n" +
-                    "\t<p id=\"obj-txt\" style=\"margin-left:0px;line-height:0.45;\">"+city+" - "+degree+". Date of Completion: "+year+"</p>\n" +
-                    "\t<p id=\"obj-txt\" style=\"margin-left:0px;line-height:0.45;\">Percentage Secured: "+grade+"</p>\n" +
-                    "  </li>";
+            ed=hd+
+                    "        <div class=\"ed-row\">\n" +
+                    "          <div class=\"edsub-left\">\n" +
+                    "            <p id=\"name\">"+name+","+city+"</p><br>\n" +
+                    "            <p id=\"pt\">"+degree+" - Percentage Scored: "+grade+"</p><br><br><br>\n" +
+                    "          </div>\n" +
+                    "          <div class=\"edsub-right\">\n" +
+                    "            <p id=\"edDate\">"+year+"</p>\n" +
+                    "          </div>\n" +
+                    "        </div>";
         }
         else{
-            ed=hd+"<li><b>"+name+"</b><br>\n" +
-                    "\t<p id=\"obj-txt\" style=\"margin-left:0px;line-height:0.45;\">"+city+" - "+degree+". Date of Completion: "+year+"</p>\n" +
-                    "\t<p id=\"obj-txt\" style=\"margin-left:0px;line-height:0.45;\">CGPA Secured: "+grade+"</p>\n" +
-                    "  </li>";
+            ed=hd +
+                    "        <div class=\"ed-row\">\n" +
+                    "          <div class=\"edsub-left\">\n" +
+                    "            <p id=\"name\">"+name+","+city+"</p><br>\n" +
+                    "            <p id=\"pt\">"+degree+" - CGPA Scored: "+grade+"</p><br><br><br>\n" +
+                    "          </div>\n" +
+                    "          <div class=\"edsub-right\">\n" +
+                    "            <p id=\"edDate\">"+year+"</p>\n" +
+                    "          </div>\n" +
+                    "        </div>";
         }
         return ed;
     }
@@ -108,15 +153,25 @@ public class Display extends AppCompatActivity {
     private String web_Project(String name,String tech,String desc){
         String prg;String hd="";
         if (prg_count==0){
-            hd="<p id=\"sub-header\">PROJECTS</p>\n" +
-                    "<ul id=\"point-header\">\n";
+            hd="<div class=\"project\">\n" +
+                    "          <div class=\"ep-left\">\n" +
+                    "            Project\n" +
+                    "          </div>"+"<div class=\"ep-right\">\n" ;
             prg_count+=1;
         }
 
-        prg=hd + "  <li><b>"+name+"</b><br>\n" +
-                "\t<p id=\"obj-txt\" style=\"margin-left:0px;line-height:0.45;\">Technolgies Used: "+tech+"</p>\n" +
-                "\t<p id=\"obj-txt\" style=\"margin-left:0px;line-height:0.45;\">"+desc+"</p>\n" +
-                "  </li>";
+        prg=hd +
+                "            <div class=\"ep-row\">\n" +
+                "              <div class=\"epsub-left\">\n" +
+                "                <p id=\"company-name\">"+name+"</p><br>\n" +
+                "                <p id=\"post\">Technologies Used: "+tech+"</p>\n" +
+                "                <p id=\"eppara\">\n" + desc+
+                "                </p><br><br><br>\n" +
+                "              </div>\n" +
+                "              <div class=\"epsub-right\">\n" +
+                "                <!--<p id=\"epDate\"> January 2015 - January 2016</p>-->\n" +
+                "              </div>\n" +
+                "            </div>";
         return prg;
     }
 
@@ -124,11 +179,17 @@ public class Display extends AppCompatActivity {
     private String web_Achievement(String desc){
         String ah;String hd="";
         if (ach_count==0){
-            hd="<p id=\"sub-header\">ACHIEVEMENTS</p>\n" +
-                    "<ul id=\"point-header\" style=\"font-size:14px;\">\n";
+            hd="<div class=\"achieve\">\n" +
+                    "        <div class=\"sk-left\">\n" +
+                    "            Achievements\n" +
+                    "        </div>\n" +
+                    "        <div class=\"sk-right\">\n" +
+                    "            <ul id=\"sk-list\">";
             ach_count+=1;
         }
-        ah= hd + "  <li id=\"point-single\">"+desc+"</li>";
+        ah= hd + "<li>\n" +
+                "                    <p id=\"achpara\">" +desc+
+                "                </li>";
         return ah;
     }
 
@@ -136,19 +197,29 @@ public class Display extends AppCompatActivity {
     private String web_Skill(String desc){
         String sk;String hd="";
         if (sk_count==0){
-            hd="<p id=\"sub-header\">SKILLS</p>\n" +
-                    "<ul id=\"point-header\" style=\"font-size:14px;\">\n";
+            hd="<div class=\"skills\">\n" +
+                    "        <div class=\"sk-left\">\n" +
+                    "            Skills\n" +
+                    "        </div>\n" +
+                    "        <div class=\"sk-right\">\n" +
+                    "            <ul id=\"sk-list\">";
             sk_count+=1;
         }
-        sk = hd + "  <li id=\"point-single\">"+desc+"</li>";
+        sk = hd + "<li>\n" +
+                "                    <p id=\"skpara\">" +desc+
+                "                </li>";
         return sk;
     }
 
     private String web_Declaration(String desc){
-        String dc="<p id=\"sub-header\">DECLARATION</p>\n" +
-                "<p id=\"obj-txt\">"+desc+"</p>\n" +
-                "<br></body>\n" +
-                "</html>";
+        String dc="<div class=\"declaration\">\n" +
+                "          <div class=\"ob-left\" >\n" +
+                "              Declaration\n" +
+                "          </div>\n" +
+                "          <div class=\"ob-right\">\n" +
+                "              <p id=\"obpara\">\n" +
+                desc +
+                "              </p>";
         return dc;
     }
 
@@ -197,7 +268,11 @@ public class Display extends AppCompatActivity {
             st+=web_Achievement(desc);
         }
         cursor.close();
-        st+="</ul> <br>";
+        st+="            </ul>\n" +
+                "        </div>\n" +
+                "     </div>\n" +
+                "     <hr>\n" +
+                "     <br>";
         return st;
     }
     private String skill_Task(){
@@ -210,7 +285,11 @@ public class Display extends AppCompatActivity {
             st+=web_Skill(desc);
         }
         cursor.close();
-        st+="</ul> <br>";
+        st+="            </ul>\n" +
+                "        </div>\n" +
+                "     </div>\n" +
+                "     <hr>\n" +
+                "     <br>";
         return st;
     }
 
@@ -218,23 +297,33 @@ public class Display extends AppCompatActivity {
         String name,tech,desc;String st="";
         Cursor cursor=getTabledata("prg");
         //cursor.moveToFirst();
-        while (cursor.moveToNext()) {
-            //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+        int count=cursor.getCount();
+        for (int i=1;i<=count;i++){
+            cursor.moveToNext();
             name=cursor.getString(cursor.getColumnIndex("name"));
             tech=cursor.getString(cursor.getColumnIndex("tech"));
             desc=cursor.getString(cursor.getColumnIndex("prg_desc"));
             st+=web_Project(name,tech,desc);
+            if (i!=count){
+                st+="<hr id=\"small-hr\">\n" +
+                        "      <br>";
+            }
         }
         cursor.close();
-        st+="</ul> <br>";
+        st+="</div>\n" +
+                "  </div>\n" +
+                "  <br>\n" +
+                "  <hr>\n" +
+                "     <br>";
         return st;
     }
 
     private String education_Task(){
         String name,city,deg,year,type1,ptcg;String st="";
         Cursor cursor=getTabledata("edu");
-        //cursor.moveToFirst();
-        while (cursor.moveToNext()) {
+        int count=cursor.getCount();
+        for (int i=1;i<=count;i++){
+            cursor.moveToNext();
             //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
             name=cursor.getString(cursor.getColumnIndex("name"));
             city=cursor.getString(cursor.getColumnIndex("city"));
@@ -243,9 +332,17 @@ public class Display extends AppCompatActivity {
             type1=cursor.getString(cursor.getColumnIndex("type"));
             ptcg=cursor.getString(cursor.getColumnIndex("grade"));
             st+=web_Education(name,city,deg,year,type1,ptcg);
+            if (i!=count){
+                st+="<hr id=\"small-hr\">\n" +
+                        "      <br>";
+            }
         }
         cursor.close();
-        st+="</ul> <br>";
+        st+="</div>\n" +
+                "  </div>\n" +
+                "  <br>\n" +
+                "  <hr>\n" +
+                "     <br>";
         return st;
     }
 
@@ -253,16 +350,26 @@ public class Display extends AppCompatActivity {
         String name,city,year,desc;String st="";
         Cursor cursor=getTabledata("intr");
         //cursor.moveToFirst();
-        while (cursor.moveToNext()) {
+        int count=cursor.getCount();
+        for (int i=1;i<=count;i++){
+            cursor.moveToNext();
             //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
             name=cursor.getString(cursor.getColumnIndex("name"));
             city=cursor.getString(cursor.getColumnIndex("city"));
             year=cursor.getString(cursor.getColumnIndex("tfrom"))+" - "+cursor.getString(cursor.getColumnIndex("tto"));
             desc=cursor.getString(cursor.getColumnIndex("intr_desc"));
             st+=web_Internship(name,city,year,desc);
+            if (i!=count){
+                st+="<hr id=\"small-hr\">\n" +
+                        "      <br>";
+            }
         }
         cursor.close();
-        st+="</ul>";
+        st+="</div>\n" +
+                "  </div>\n" +
+                "<br>\n" +
+                "<hr>\n" +
+                "  <br>";
         return st;
     }
 
@@ -271,7 +378,9 @@ public class Display extends AppCompatActivity {
         Cursor cursor=getTabledata("exp");
         //if (cursor.getCount()<1){return "";}
         //cursor.moveToFirst();
-        while (cursor.moveToNext()) {
+        int count=cursor.getCount();
+        for (int i=1;i<=count;i++){
+            cursor.moveToNext();
             //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
             name=cursor.getString(cursor.getColumnIndex("name"));
             city=cursor.getString(cursor.getColumnIndex("city"));
@@ -279,9 +388,17 @@ public class Display extends AppCompatActivity {
             year=cursor.getString(cursor.getColumnIndex("tfrom"))+" - "+cursor.getString(cursor.getColumnIndex("tto"));
             desc=cursor.getString(cursor.getColumnIndex("exp_desc"));
             st+=web_Experience(name,city,post,year,desc);
+            if (i!=count){
+                st+="<hr id=\"small-hr\">\n" +
+                        "      <br>";
+            }
         }
         cursor.close();
-        st+="</ul>";
+        st+="</div>\n" +
+                "  </div>\n" +
+                "<br>\n" +
+                "<hr>\n" +
+                "  <br>";
         return st;
     }
 
@@ -290,7 +407,7 @@ public class Display extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
+        setContentView(R.layout.activity_display2);
         myWebView = (WebView) findViewById(R.id.webview);
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
@@ -311,7 +428,7 @@ public class Display extends AppCompatActivity {
         acht=achievement_Task();
         skt=skill_Task();
         dect=declaration_Task();
-        String htmldata=(pert+objt+expt+intt+prgt+skt+acht+edut+dect);
+        String htmldata=(pert+objt+expt+intt+prgt+acht+skt+edut+dect);
         htmldata=st+htmldata;
         myWebView.loadDataWithBaseURL("file:///android_asset/", htmldata, "text/html", "UTF-8", null);
 

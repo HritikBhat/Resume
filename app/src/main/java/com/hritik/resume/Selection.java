@@ -16,12 +16,20 @@ public class Selection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
 
-        CardView card_view = findViewById(R.id.tempcard1); // creating a CardView and assigning a value.
+        CardView card_view1 = findViewById(R.id.tempcard1);
+        CardView card_view2 = findViewById(R.id.tempcard2);// creating a CardView and assigning a value.
 
-        card_view.setOnClickListener(new View.OnClickListener() {
+        card_view1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ct = new Intent(getApplicationContext(), Display.class);
+                startActivity(ct);
+            }
+        });
+        card_view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ct = new Intent(getApplicationContext(), Display2.class);
                 startActivity(ct);
             }
         });

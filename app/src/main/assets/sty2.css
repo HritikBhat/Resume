@@ -1,0 +1,132 @@
+body{
+    color: #1b365d;
+    background-color: #EDEDED;
+    font-family: "Times New Roman", Helvetica, sans-serif;
+    margin: 30px;
+}
+.ep-row,.epsub-left{page-break-inside: avoid;}
+hr {
+    display: block;
+    height: 1px;
+    background: transparent;
+    border-top: solid 1px #aaa;
+}
+.header{
+    clear: both;
+}
+#addr{
+    font-size: 13px;
+}
+.hd-left{
+    float: left;
+    height:130px;
+    width: 70%;
+    font-size: 37px;
+}
+.hd-right{
+    height:130px;
+    width: 30%;
+    text-align: center;
+    float: right;
+    font-size: 19px;
+}
+.ob-left{
+    float: left;
+    height:auto;
+    width: auto;
+    font-weight: bold;
+    font-size: 22px;
+}
+.ob-right{
+    height:auto;
+    margin-left: 150px;
+    width: 100%;
+    font-size: 19px;
+}
+#obpara,#eppara,#skpara,#achpara{
+    font-size: 13px;
+}
+#sk-list{
+    height: auto;
+}
+.sk-left{
+    float: left;
+    width: auto;
+    height:auto;
+
+    font-weight: bold;
+    font-size: 22px;
+}
+#inlright{
+  display: inline;
+  text-align: right;
+}
+.sk-right{
+    height:auto;
+    width: 100%;
+    font-size: 19px;
+    margin-left: 150px;
+}
+li,#skpara,#achpara{
+    height: auto;
+}
+#achpara,#skpara{width:80%;}
+#obpara{width:70%;padding-top: 5px;}
+
+.ed-left,.ep-left{
+  height: auto;
+  font-weight: bold;
+  font-size: 22px;
+  width: 15%;
+  float: left;
+
+}
+.ed-right,.ep-right{
+  height: auto;
+  float: left;
+  width: 85%;
+}
+
+.edsub-left{
+  height: auto;
+  font-weight: bold;
+  width: 60%;
+  margin-left: 100px;
+  float: left;
+
+}
+.epsub-left{
+  height: auto;
+  width: 60%;
+  margin-left: 50px;
+  float: left;
+}
+.epsub-right{
+  height: auto;
+  float: right;
+  width: 30%;
+}
+#name,#company-name{
+  font-weight: bold;
+  display: inline;
+  font-size: 18px;
+}
+#pt,#post{
+  font-weight: bold;
+  display: inline;
+  font-size: 16px;
+}
+.edsub-right{
+  height: auto;
+  float: right;
+  width: 20%;
+}
+#edDate,#epDate{
+  display: inline;
+  font-size: 14px;
+  font-weight: bold;
+}
+#inl,#epcomp,#eppost{display:inline;}
+#small-hr{
+    width: 90%;
+}
