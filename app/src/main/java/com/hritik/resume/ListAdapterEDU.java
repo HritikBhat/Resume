@@ -20,8 +20,6 @@ public class ListAdapterEDU extends ArrayAdapter<String> {
     private final Activity context;
     private final ArrayList<String> name,city,deg,year,ptcg,type1;
 
-    private Activity act;
-
     public ListAdapterEDU(Activity context, ArrayList<String> name, ArrayList<String> city, ArrayList<String> deg, ArrayList<String> year, ArrayList<String> ptcg,ArrayList<String> type1) {
         super(context, R.layout.my_list_education,name);
         // TODO Auto-generated constructor stub

@@ -77,7 +77,7 @@ public class Display2 extends AppCompatActivity {
                 "                <p id=\"company-name\">"+name+","+city+"</p><br>\n" +
                 "                <!--<p id=\"post\">Executive Manager</p>-->\n" +
                 "                <p id=\"eppara\">\n" + desc+
-                "                </p><br><br><br>\n" +
+                "                </p><br>\n" +
                 "              </div>\n" +
                 "              <div class=\"epsub-right\">\n" +
                 "                <p id=\"epDate\">"+year+"</p>\n" +
@@ -103,7 +103,7 @@ public class Display2 extends AppCompatActivity {
                 "          <p id=\"company-name\">"+name+","+city+"</p><br>\n" +
                 "          <p id=\"post\">"+post+"</p>\n" +
                 "          <p id=\"eppara\">\n" + desc+
-                "          </p><br><br><br>\n" +
+                "          </p><br>\n" +
                 "        </div>\n" +
                 "        <div class=\"epsub-right\">\n" +
                 "          <p id=\"epDate\">"+year+"</p>\n" +
@@ -127,7 +127,7 @@ public class Display2 extends AppCompatActivity {
                     "        <div class=\"ed-row\">\n" +
                     "          <div class=\"edsub-left\">\n" +
                     "            <p id=\"name\">"+name+","+city+"</p><br>\n" +
-                    "            <p id=\"pt\">"+degree+" - Percentage Scored: "+grade+"</p><br><br><br>\n" +
+                    "            <p id=\"pt\">"+degree+" - Percentage Scored: "+grade+"</p><br><br>\n" +
                     "          </div>\n" +
                     "          <div class=\"edsub-right\">\n" +
                     "            <p id=\"edDate\">"+year+"</p>\n" +
@@ -166,7 +166,7 @@ public class Display2 extends AppCompatActivity {
                 "                <p id=\"company-name\">"+name+"</p><br>\n" +
                 "                <p id=\"post\">Technologies Used: "+tech+"</p>\n" +
                 "                <p id=\"eppara\">\n" + desc+
-                "                </p><br><br><br>\n" +
+                "                </p><br>\n" +
                 "              </div>\n" +
                 "              <div class=\"epsub-right\">\n" +
                 "                <!--<p id=\"epDate\"> January 2015 - January 2016</p>-->\n" +
@@ -276,8 +276,7 @@ public class Display2 extends AppCompatActivity {
             st += "            </ul>\n" +
                     "        </div>\n" +
                     "     </div>\n" +
-                    "     <hr>\n" +
-                    "     <br>";
+                    "     <hr>\n";
             return st;
         }
         else
@@ -320,16 +319,14 @@ public class Display2 extends AppCompatActivity {
                 desc = cursor.getString(cursor.getColumnIndex("prg_desc"));
                 st += web_Project(name, tech, desc);
                 if (i != count && count!=1) {
-                    st += "<hr id=\"small-hr\">\n" +
-                            "      <br>";
+                    st += "<hr id=\"small-hr\">\n" + "      <br>";
                 }
             }
             cursor.close();
             st += "</div>\n" +
                     "  </div>\n" +
                     "  <br>\n" +
-                    "  <hr>\n" +
-                    "     <br>";
+                    "  <hr>\n";
             return st;
         }
         else{
@@ -476,7 +473,8 @@ public class Display2 extends AppCompatActivity {
         PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter();
 
         //provide name to your newly generated pdf file
-        String jobName = getString(R.string.app_name) + " Print Test";
+        //String jobName = getString(R.string.app_name) + " Print Test";
+        String jobName = "Resume_File.pdf";
         //open print dialog
         printManager.print(jobName, printAdapter, new PrintAttributes.Builder().build());
     }

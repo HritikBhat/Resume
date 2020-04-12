@@ -129,4 +129,5 @@ li,#skpara,#achpara{
 #inl,#epcomp,#eppost{display:inline;}
 #small-hr{
     width: 90%;
+    float:left;
 }
