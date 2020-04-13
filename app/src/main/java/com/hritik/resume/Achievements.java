@@ -52,35 +52,38 @@ public class Achievements extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         try {
-            desc = new ArrayList<String>();
-            printListView(getActivity());
-            view = inflater.inflate(R.layout.fragment_achievements, container, false);
-            adapter = new MyListAdapter(getActivity(), desc,"ach");
-            list = view.findViewById(R.id.list);
-            list.setAdapter(adapter);
-        }
-        catch (Exception e){e.printStackTrace();}
-        MainResume mr=new MainResume();
-        add = view.findViewById(R.id.add_btn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent ct = new Intent(getActivity(), Ach_Desc.class);
-                ct.putExtra("from","ach");
-                ct.putExtra("num","7");
-                startActivity(ct);
+            try {
+                desc = new ArrayList<String>();
+                printListView(getActivity());
+                view = inflater.inflate(R.layout.fragment_achievements, container, false);
+                adapter = new MyListAdapter(getActivity(), desc, "ach");
+                list = view.findViewById(R.id.list);
+                list.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        reset = view.findViewById(R.id.ach_reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyHelper hp = new MyHelper(getActivity());
-                hp.onDeleteAll("ach");
-                desc.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
+            MainResume mr = new MainResume();
+            add = view.findViewById(R.id.add_btn);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ct = new Intent(getActivity(), Ach_Desc.class);
+                    ct.putExtra("from", "ach");
+                    ct.putExtra("num", "7");
+                    startActivity(ct);
+                }
+            });
+            reset = view.findViewById(R.id.ach_reset);
+            reset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyHelper hp = new MyHelper(getActivity());
+                    hp.onDeleteAll("ach");
+                    desc.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
         return view;
 
     }

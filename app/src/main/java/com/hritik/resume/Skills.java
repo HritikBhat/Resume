@@ -45,35 +45,38 @@ public class Skills extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         try {
-            desc = new ArrayList<String>();
-            printListView(getActivity());
-            view = inflater.inflate(R.layout.fragment_skills, container, false);
-            adapter = new MyListAdapter(getActivity(), desc,"sk");
-            list = view.findViewById(R.id.sk_list);
-            list.setAdapter(adapter);
-        }
-        catch (Exception e){e.printStackTrace();}
-        MainResume mr=new MainResume();
-        add = view.findViewById(R.id.sk_add_btn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent ct = new Intent(getActivity(), Ach_Desc.class);
-                ct.putExtra("from","sk");
-                ct.putExtra("num","6");
-                startActivity(ct);
+            try {
+                desc = new ArrayList<String>();
+                printListView(getActivity());
+                view = inflater.inflate(R.layout.fragment_skills, container, false);
+                adapter = new MyListAdapter(getActivity(), desc, "sk");
+                list = view.findViewById(R.id.sk_list);
+                list.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        reset = view.findViewById(R.id.sk_reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyHelper hp = new MyHelper(getActivity());
-                hp.onDeleteAll("sk");
-                desc.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
+            MainResume mr = new MainResume();
+            add = view.findViewById(R.id.sk_add_btn);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ct = new Intent(getActivity(), Ach_Desc.class);
+                    ct.putExtra("from", "sk");
+                    ct.putExtra("num", "6");
+                    startActivity(ct);
+                }
+            });
+            reset = view.findViewById(R.id.sk_reset);
+            reset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyHelper hp = new MyHelper(getActivity());
+                    hp.onDeleteAll("sk");
+                    desc.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
         return view;
     }
 }

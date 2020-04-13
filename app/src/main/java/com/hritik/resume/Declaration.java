@@ -56,24 +56,26 @@ public class Declaration extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_declaration, container, false);
-        ed=view.findViewById(R.id.ed_dec);
-        ed.setText(printListView(getActivity()));
-        done=view.findViewById(R.id.dn_btn);
-        print=view.findViewById(R.id.print1);
-        done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateDec(getActivity());
-            }
-        });
-        print.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent ct = new Intent(getActivity(), Selection.class);
-                startActivity(ct);
-            }
-        });
+        try {
+            view = inflater.inflate(R.layout.fragment_declaration, container, false);
+            ed = view.findViewById(R.id.ed_dec);
+            ed.setText(printListView(getActivity()));
+            done = view.findViewById(R.id.dn_btn);
+            print = view.findViewById(R.id.print1);
+            done.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    updateDec(getActivity());
+                }
+            });
+            print.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ct = new Intent(getActivity(), Selection.class);
+                    startActivity(ct);
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
         return view;
     }
 }

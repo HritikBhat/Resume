@@ -44,39 +44,42 @@ public class Internship extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         try {
-            name = new ArrayList<String>();
-            city = new ArrayList<String>();
-            descp= new ArrayList<String>();
-            year = new ArrayList<String>();
-            printListView(getActivity());
-            view = inflater.inflate(R.layout.fragment_internship, container, false);
-            adapter = new ListAdapterINT(getActivity(),name,city,year,descp);
-            list = view.findViewById(R.id.int_list);
-            list.setAdapter(adapter);
-        }
-        catch (Exception e){e.printStackTrace();}
-        MainResume mr=new MainResume();
-        add = view.findViewById(R.id.int_add_btn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent ct = new Intent(getActivity(), Int_Desc.class);
-                startActivity(ct);
+            try {
+                name = new ArrayList<String>();
+                city = new ArrayList<String>();
+                descp = new ArrayList<String>();
+                year = new ArrayList<String>();
+                printListView(getActivity());
+                view = inflater.inflate(R.layout.fragment_internship, container, false);
+                adapter = new ListAdapterINT(getActivity(), name, city, year, descp);
+                list = view.findViewById(R.id.int_list);
+                list.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        reset = view.findViewById(R.id.int_reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyHelper hp = new MyHelper(getActivity());
-                hp.onDeleteAll("intr");
-                name.clear();
-                city.clear();
-                year.clear();
-                descp.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
+            MainResume mr = new MainResume();
+            add = view.findViewById(R.id.int_add_btn);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ct = new Intent(getActivity(), Int_Desc.class);
+                    startActivity(ct);
+                }
+            });
+            reset = view.findViewById(R.id.int_reset);
+            reset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyHelper hp = new MyHelper(getActivity());
+                    hp.onDeleteAll("intr");
+                    name.clear();
+                    city.clear();
+                    year.clear();
+                    descp.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
         return view;
 
     }

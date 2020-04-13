@@ -81,40 +81,43 @@ public class Personal extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_personal, container, false);
-        Cursor cursor=printListView(getActivity());
-        if (cursor!=null){
-            nm=cursor.getString(cursor.getColumnIndex("name"));
-            ad=cursor.getString(cursor.getColumnIndex("addr"));
-            ph=cursor.getString(cursor.getColumnIndex("phone"));
-            em=cursor.getString(cursor.getColumnIndex("email"));
-            db=cursor.getString(cursor.getColumnIndex("dob"));
-        }
-        else{
-            nm="";
-            ad="";
-            ph="";
-            db="";
-        }
-
-        name=view.findViewById(R.id.psl_name);
-        name.setText(nm);
-        addr=view.findViewById(R.id.psl_addr);
-        addr.setText(ad);
-        phn=view.findViewById(R.id.psl_phone);
-        phn.setText(ph);
-        eml=view.findViewById(R.id.psl_email);
-        eml.setText(em);
-        dobe=view.findViewById(R.id.psl_dob);
-        dobe.setText(db);
-        done=view.findViewById(R.id.psldone_btn);
-        done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updatePsl(getActivity());
+        try {
+            view = inflater.inflate(R.layout.fragment_personal, container, false);
+            Cursor cursor = printListView(getActivity());
+            if (cursor != null) {
+                nm = cursor.getString(cursor.getColumnIndex("name"));
+                ad = cursor.getString(cursor.getColumnIndex("addr"));
+                ph = cursor.getString(cursor.getColumnIndex("phone"));
+                em = cursor.getString(cursor.getColumnIndex("email"));
+                db = cursor.getString(cursor.getColumnIndex("dob"));
+            } else {
+                nm = "";
+                ad = "";
+                ph = "";
+                db = "";
             }
-        });
+
+            name = view.findViewById(R.id.psl_name);
+            name.setText(nm);
+            addr = view.findViewById(R.id.psl_addr);
+            addr.setText(ad);
+            phn = view.findViewById(R.id.psl_phone);
+            phn.setText(ph);
+            eml = view.findViewById(R.id.psl_email);
+            eml.setText(em);
+            dobe = view.findViewById(R.id.psl_dob);
+            dobe.setText(db);
+            done = view.findViewById(R.id.psldone_btn);
+            done.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    updatePsl(getActivity());
+                }
+            });
+        }
+        catch (Exception e){e.printStackTrace();}
         return view;
+
     }
 }
 

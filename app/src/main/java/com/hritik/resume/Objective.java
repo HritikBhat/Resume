@@ -56,17 +56,18 @@ public class Objective extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view=inflater.inflate(R.layout.fragment_objective, container, false);
-        ed=view.findViewById(R.id.ed_obj);
-        ed.setText(printListView(getActivity()));
-        sv=view.findViewById(R.id.obj_sv_btn);
-        sv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateDec(getActivity());
-            }
-        });
-
+        try {
+            view = inflater.inflate(R.layout.fragment_objective, container, false);
+            ed = view.findViewById(R.id.ed_obj);
+            ed.setText(printListView(getActivity()));
+            sv = view.findViewById(R.id.obj_sv_btn);
+            sv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    updateDec(getActivity());
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
         return view;
     }
 

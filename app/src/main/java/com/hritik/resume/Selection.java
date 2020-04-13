@@ -15,7 +15,7 @@ public class Selection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
-
+        try{
         CardView card_view1 = findViewById(R.id.tempcard1);
         CardView card_view2 = findViewById(R.id.tempcard2);// creating a CardView and assigning a value.
 
@@ -32,6 +32,7 @@ public class Selection extends AppCompatActivity {
                 Intent ct = new Intent(getApplicationContext(), Display2.class);
                 startActivity(ct);
             }
-        });
+        });}
+        catch (Exception e){e.printStackTrace();}
     }
 }

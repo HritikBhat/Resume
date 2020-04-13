@@ -44,35 +44,38 @@ public class Project extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         try {
-            name = new ArrayList<String>();
-            tech = new ArrayList<String>();
-            desc = new ArrayList<String>();
-            printListView(getActivity());
-            view = inflater.inflate(R.layout.fragment_project, container, false);
-            adapter = new ListAdapterPRG(getActivity(), name, tech, desc);
-            list = view.findViewById(R.id.prg_list);
-            list.setAdapter(adapter);
-        }
-        catch (Exception e){e.printStackTrace();}
-        MainResume mr=new MainResume();
-        add = view.findViewById(R.id.prg_add_btn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent ct = new Intent(getActivity(), Prg_Desc.class);
-                startActivity(ct);
+            try {
+                name = new ArrayList<String>();
+                tech = new ArrayList<String>();
+                desc = new ArrayList<String>();
+                printListView(getActivity());
+                view = inflater.inflate(R.layout.fragment_project, container, false);
+                adapter = new ListAdapterPRG(getActivity(), name, tech, desc);
+                list = view.findViewById(R.id.prg_list);
+                list.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        reset = view.findViewById(R.id.prg_reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyHelper hp = new MyHelper(getActivity());
-                hp.onDeleteAll("prg");
-                desc.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
+            MainResume mr = new MainResume();
+            add = view.findViewById(R.id.prg_add_btn);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ct = new Intent(getActivity(), Prg_Desc.class);
+                    startActivity(ct);
+                }
+            });
+            reset = view.findViewById(R.id.prg_reset);
+            reset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyHelper hp = new MyHelper(getActivity());
+                    hp.onDeleteAll("prg");
+                    desc.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
         return view;
     }
 }

@@ -44,41 +44,45 @@ public class Experience extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         try {
-            name = new ArrayList<String>();
-            city = new ArrayList<String>();
-            post=new ArrayList<String>();
-            descp= new ArrayList<String>();
-            year = new ArrayList<String>();
-            printListView(getActivity());
-            view = inflater.inflate(R.layout.fragment_experience, container, false);
-            adapter = new ListAdapterEXP(getActivity(),name,city,post,year,descp);
-            list = view.findViewById(R.id.exp_list);
-            list.setAdapter(adapter);
-        }
-        catch (Exception e){e.printStackTrace();}
-        MainResume mr=new MainResume();
-        add = view.findViewById(R.id.exp_add_btn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent ct = new Intent(getActivity(), Exp_Desc.class);
-                startActivity(ct);
+            try {
+                name = new ArrayList<String>();
+                city = new ArrayList<String>();
+                post = new ArrayList<String>();
+                descp = new ArrayList<String>();
+                year = new ArrayList<String>();
+                printListView(getActivity());
+                view = inflater.inflate(R.layout.fragment_experience, container, false);
+                adapter = new ListAdapterEXP(getActivity(), name, city, post, year, descp);
+                list = view.findViewById(R.id.exp_list);
+                list.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        reset = view.findViewById(R.id.exp_reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyHelper hp = new MyHelper(getActivity());
-                hp.onDeleteAll("exp");
-                name.clear();
-                city.clear();
-                post.clear();
-                year.clear();
-                descp.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
+            MainResume mr = new MainResume();
+            add = view.findViewById(R.id.exp_add_btn);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ct = new Intent(getActivity(), Exp_Desc.class);
+                    startActivity(ct);
+                }
+            });
+            reset = view.findViewById(R.id.exp_reset);
+            reset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyHelper hp = new MyHelper(getActivity());
+                    hp.onDeleteAll("exp");
+                    name.clear();
+                    city.clear();
+                    post.clear();
+                    year.clear();
+                    descp.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
+
         return view;
 
     }

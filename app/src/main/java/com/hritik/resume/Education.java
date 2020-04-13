@@ -49,43 +49,46 @@ public class Education extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         try {
-            name = new ArrayList<String>();
-            city = new ArrayList<String>();
-            deg= new ArrayList<String>();
-            year = new ArrayList<String>();
-            type1 = new ArrayList<String>();
-            ptcg = new ArrayList<String>();
-            printListView(getActivity());
-            view = inflater.inflate(R.layout.fragment_education, container, false);
-            adapter = new ListAdapterEDU(getActivity(),name,city,deg,year,ptcg,type1);
-            list = view.findViewById(R.id.edu_list);
-            list.setAdapter(adapter);
-        }
-        catch (Exception e){e.printStackTrace();}
-        MainResume mr=new MainResume();
-        add = view.findViewById(R.id.edu_add_btn);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent ct = new Intent(getActivity(), Edu_Desc.class);
-                startActivity(ct);
+            try {
+                name = new ArrayList<String>();
+                city = new ArrayList<String>();
+                deg = new ArrayList<String>();
+                year = new ArrayList<String>();
+                type1 = new ArrayList<String>();
+                ptcg = new ArrayList<String>();
+                printListView(getActivity());
+                view = inflater.inflate(R.layout.fragment_education, container, false);
+                adapter = new ListAdapterEDU(getActivity(), name, city, deg, year, ptcg, type1);
+                list = view.findViewById(R.id.edu_list);
+                list.setAdapter(adapter);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        reset = view.findViewById(R.id.edu_reset);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyHelper hp = new MyHelper(getActivity());
-                hp.onDeleteAll("edu");
-                name.clear();
-                city.clear();
-                deg.clear();
-                year.clear();
-                type1.clear();
-                ptcg.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
+            MainResume mr = new MainResume();
+            add = view.findViewById(R.id.edu_add_btn);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ct = new Intent(getActivity(), Edu_Desc.class);
+                    startActivity(ct);
+                }
+            });
+            reset = view.findViewById(R.id.edu_reset);
+            reset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyHelper hp = new MyHelper(getActivity());
+                    hp.onDeleteAll("edu");
+                    name.clear();
+                    city.clear();
+                    deg.clear();
+                    year.clear();
+                    type1.clear();
+                    ptcg.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
         return view;
 
     }
