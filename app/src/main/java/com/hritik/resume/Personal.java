@@ -35,7 +35,7 @@ public class Personal extends Fragment {
             return false;
         }
 
-        if (Pattern.matches("^[A-Z]{1}[A-Za-z]+\\s[A-Za-z]+$",name.getText().toString())!=true){
+        if (Pattern.matches("^[A-Z]{1}[A-Za-z,']+\\s[A-Za-z,']+$",name.getText().toString())!=true){
             Toast.makeText(getActivity(),"Enter full name properly.",Toast.LENGTH_LONG).show();
             return false;
         }

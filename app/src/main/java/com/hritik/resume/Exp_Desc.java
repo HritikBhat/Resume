@@ -23,7 +23,7 @@ public class Exp_Desc extends AppCompatActivity {
     private Boolean isValid(){
 
         if (to.getText().toString().equalsIgnoreCase("present")!=true){
-        if(Integer.parseInt(to.getText().toString())>Integer.parseInt(from.getText().toString())){
+        if(Integer.parseInt(to.getText().toString())<Integer.parseInt(from.getText().toString())){
             Toast.makeText(getApplicationContext(),"Invalid year in working period.",Toast.LENGTH_LONG).show();
             return false;
         }}
@@ -31,11 +31,11 @@ public class Exp_Desc extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Year is invalid in either section.",Toast.LENGTH_LONG).show();
             return false;}
 
-        if (Pattern.matches("[A-Za-z0-9\\s]+$",name.getText().toString())!=true){
+        if (Pattern.matches("[A-Za-z0-9,'\\s]+$",name.getText().toString())!=true){
             Toast.makeText(getApplicationContext(),"Enter company name properly.",Toast.LENGTH_LONG).show();
             return false;
         }
-        if (Pattern.matches("[A-Za-z(),\\s]+",city.getText().toString())!=true){
+        if (Pattern.matches("[A-Za-z(),'\\s]+",city.getText().toString())!=true){
             Toast.makeText(getApplicationContext(),"Enter city name properly.",Toast.LENGTH_LONG).show();
             return false;
         }
