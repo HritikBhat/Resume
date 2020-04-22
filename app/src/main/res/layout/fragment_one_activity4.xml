@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".oneActivity4"
+    android:background="@drawable/onetimeactivity4">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/four_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prev"
+        android:textColor="@color/whitecol"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        style="@style/FlatButton"
+        android:drawableLeft="@drawable/ic_left"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/four_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textColor="@color/whitecol"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        style="@style/FlatButton"
+        android:drawableRight="@drawable/ic_right"/>
+</RelativeLayout>

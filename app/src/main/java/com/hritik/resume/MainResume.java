@@ -1,6 +1,7 @@
 package com.hritik.resume;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
@@ -13,6 +14,7 @@ public class MainResume extends AppCompatActivity{
 
     private TabAdapter adapter;
     private ViewPager viewPager;
+    private Toolbar toolb;
     private TabLayout tabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +22,11 @@ public class MainResume extends AppCompatActivity{
 
         setContentView(R.layout.activity_main_resume);
         viewPager = findViewById(R.id.viewPager);
+        toolb=findViewById(R.id.toolbar);
         tabLayout = findViewById(R.id.tbLayout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        setSupportActionBar(toolb);
         adapter = new TabAdapter(getSupportFragmentManager());
         adapter.addFragment(new Personal(), "Personal");
         adapter.addFragment(new Objective(), "Objective");

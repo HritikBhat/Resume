@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Display2"></activity>
+        <activity android:name=".InstructionMain"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Display2" />
         <activity android:name=".Display" />
         <activity android:name=".Selection" />
         <activity android:name=".Exp_Desc" />
@@ -18,7 +20,7 @@
         <activity android:name=".Prg_Desc" />
         <activity android:name=".Ach_Desc" />
         <activity android:name=".MainResume" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
