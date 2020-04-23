@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".instruction.oneActivity3"
-    android:background="@drawable/onetimeactivity3n">
+    tools:context=".instruction.oneActivity3_1"
+    android:background="@drawable/onetimeactivity31n">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/three_left"
+        android:id="@+id/threeone_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Prev"
@@ -19,7 +19,7 @@
         android:drawableLeft="@drawable/ic_left"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/three_right"
+        android:id="@+id/threeone_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"

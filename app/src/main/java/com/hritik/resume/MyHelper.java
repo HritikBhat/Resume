@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MyHelper extends SQLiteOpenHelper
 {
@@ -80,6 +81,29 @@ public class MyHelper extends SQLiteOpenHelper
         String query = "DELETE FROM "+tb;
         db.execSQL(query);
         db.close();
+    }
+    public void onDeleteAllTables(){
+        ArrayList<String> tables = new ArrayList<String>();
+        tables.add("ach");
+        tables.add("dec");
+        tables.add("obj");
+        tables.add("sk");
+        tables.add("prg");
+        tables.add("edu");
+        tables.add("intr");
+        tables.add("exp");
+        tables.add("psl");
+
+        for(int i=0;i<tables.size();i++) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            try {
+                String query = "DELETE FROM " + tables.get(i);
+                db.execSQL(query);
+            }
+            catch (Exception e){e.printStackTrace();}
+            db.close();
+        }
+
     }
 
 }

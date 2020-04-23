@@ -26,7 +26,7 @@ public class oneActivity4 extends Fragment {
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(2);
+                viewPager.setCurrentItem(3);
             }
         });
         right=view.findViewById(R.id.four_right);
@@ -34,7 +34,7 @@ public class oneActivity4 extends Fragment {
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(4);
+                viewPager.setCurrentItem(5);
             }
         });
         return view;

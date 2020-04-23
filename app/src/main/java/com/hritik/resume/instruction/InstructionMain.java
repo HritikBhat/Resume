@@ -27,6 +27,7 @@ public class InstructionMain extends AppCompatActivity {
         adapter.addFragment(new oneActivity1(), "");
         adapter.addFragment(new oneActivity2(), "");
         adapter.addFragment(new oneActivity3(), "");
+        adapter.addFragment(new oneActivity3_1(), "");
         adapter.addFragment(new oneActivity4(), "");
         adapter.addFragment(new oneActivity5(), "");
         adapter.addFragment(new oneActivityF(), "");
