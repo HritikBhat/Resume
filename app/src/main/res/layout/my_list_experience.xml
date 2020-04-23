@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/card"
+android:layout_height="wrap_content"
+android:layout_width="match_parent"
+android:minHeight="75dp"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+app:cardCornerRadius="5dp">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    >
+    android:paddingBottom="15dp">
 
     <LinearLayout
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="30dp">
@@ -39,17 +47,12 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_weight="0.3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:id="@+id/imgbtn"
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:background="@color/widgetsblue"
-            android:src="@drawable/ic_menu_opt" />
-    </LinearLayout>
-
-</LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/imgbtn"
+        style="@style/FlatButton"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:drawableLeft="@drawable/ic_delete_card" />
+</RelativeLayout>
+</androidx.cardview.widget.CardView>

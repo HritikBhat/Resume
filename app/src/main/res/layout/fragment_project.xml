@@ -1,54 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/prgly"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".main_section.Achievements">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="3"
-    tools:context=".Achievements">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_weight="0.2"
-        android:gravity="bottom|end">
-
-        <Button
-            android:id="@+id/prg_add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ADD"
-            android:textColor="@color/whitecol"
-            android:background="@color/widgetsblue"
-            android:textSize="20dp" />
-    </LinearLayout>
-
+    tools:context=".main_section.Achievements">
     <ListView
         android:id="@+id/prg_list"
         android:layout_weight="2.6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
         android:dividerHeight="10dp"
-        android:divider="@android:color/transparent"
-        android:layout_marginHorizontal="2dp">
+        android:divider="@android:color/transparent">
     </ListView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
-        android:gravity="bottom">
-
-        <Button
-            android:id="@+id/prg_reset"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="RESET"
-            android:textColor="@color/whitecol"
-            android:background="@color/widgetsblue"
-            android:textSize="25dp"/>
-    </LinearLayout>
 
 </LinearLayout>
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/prg_add_btn"
+    android:layout_width="56dp"
+    android:layout_height="56dp"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="16dp"
+    android:layout_marginRight="16dp"
+    android:backgroundTint="@color/colorPrimary"
+    android:src="@drawable/ic_plus"/>
+
+</RelativeLayout>

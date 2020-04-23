@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".oneActivity1"
+    tools:context=".Instruction.oneActivity1"
     android:background="@drawable/onetimeactivity1">
 
     <androidx.appcompat.widget.AppCompatButton

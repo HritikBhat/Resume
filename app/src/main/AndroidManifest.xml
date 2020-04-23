@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InstructionMain"></activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Display2" />
-        <activity android:name=".Display" />
-        <activity android:name=".Selection" />
-        <activity android:name=".Exp_Desc" />
-        <activity android:name=".Int_Desc" />
-        <activity android:name=".Edu_Desc" />
-        <activity android:name=".Prg_Desc" />
-        <activity android:name=".Ach_Desc" />
-        <activity android:name=".MainResume" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".instruction.InstructionMain"></activity>
+        <activity android:name=".main_section.MainActivity" />
+        <activity android:name=".displays.Display2" />
+        <activity android:name=".displays.Display" />
+        <activity android:name=".main_section.Selection" />
+        <activity android:name=".insertion.Exp_Desc" />
+        <activity android:name=".insertion.Int_Desc" />
+        <activity android:name=".insertion.Edu_Desc" />
+        <activity android:name=".insertion.Prg_Desc" />
+        <activity android:name=".insertion.Ach_Desc" />
+        <activity android:name=".main_section.MainResume" />
+        <activity android:name=".main_section.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
