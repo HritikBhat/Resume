@@ -16,7 +16,7 @@ public class MyHelper extends SQLiteOpenHelper
     }
     public void onCreate(SQLiteDatabase db){
         try {
-            db.execSQL("create table ach(ach_desc text)");
+            db.execSQL("create table ach(ach_desc text) ");
             db.execSQL("create table dec(dec_desc text)");
             db.execSQL("create table obj(obj_desc text)");
             db.execSQL("create table sk(sk_desc text)");
@@ -37,7 +37,6 @@ public class MyHelper extends SQLiteOpenHelper
         }}
     public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion)
     {
-
         db.execSQL("drop table if exists ach");
         db.execSQL("drop table if exists dec");
         db.execSQL("drop table if exists obj");

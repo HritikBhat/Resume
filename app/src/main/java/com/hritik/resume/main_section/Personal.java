@@ -30,7 +30,7 @@ public class Personal extends Fragment {
 
     private Boolean isValid(){
 
-        if (Pattern.matches("^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$",dobe.getText().toString())!=true){
+        if (Pattern.matches("^[0-3]{2}[.][0-9]{2}[.][0-9]{4}$",dobe.getText().toString())!=true){
             Toast.makeText(getActivity(),"Date should be in DD.MM.YYYY format.",Toast.LENGTH_LONG).show();
             return false;}
         if (Pattern.matches("^[0-9A-Za-z][0-9A-Za-z'.\"+$%_#*]{1,62}@[0-9A-Za-z.]{1,30}[.][A-Za-z]{1,5}$",eml.getText().toString())!=true){

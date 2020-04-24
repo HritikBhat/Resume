@@ -1,9 +1,11 @@
 package com.hritik.resume.main_section;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ct=new Intent(getApplicationContext(),MainResume.class);
+                Intent ct=new Intent(MainActivity.this,MainResume.class);
                 startActivity(ct);
             }
         });
@@ -32,11 +34,32 @@ public class MainActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Here Dialogue should come for verification purpose
-                Toast.makeText(getApplicationContext(),"Resume got reset!",Toast.LENGTH_LONG).show();
-                MyHelper hp=new MyHelper(getApplicationContext());
-                hp.onDeleteAllTables();
-                hp.close();
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this,R.style.AlertDialog);
+                builder1.setTitle("Reset Resume");
+                builder1.setMessage("Saved Information will be deleted and can not be undone.");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "RESET",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                MyHelper hp=new MyHelper(getApplicationContext());
+                                hp.onDeleteAllTables();
+                                hp.close();
+                                Toast.makeText(getApplicationContext(),"Reset Successful",Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
         tol=findViewById(R.id.toolbar2);
