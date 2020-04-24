@@ -41,14 +41,18 @@ public class Edu_Desc extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Year is invalid in either section.",Toast.LENGTH_LONG).show();
             return false;}
 
+        /*
         if (Pattern.matches("[A-Za-z0-9.,'()\\s]+$",name.getText().toString())!=true){
             Toast.makeText(getApplicationContext(),"Enter institution name properly.",Toast.LENGTH_LONG).show();
             return false;
         }
+
+
         if (Pattern.matches("[A-Za-z.()\\s]+",city.getText().toString())!=true){
             Toast.makeText(getApplicationContext(),"Enter city name properly.",Toast.LENGTH_LONG).show();
             return false;
         }
+         */
         if (sp.getSelectedItem().toString().equalsIgnoreCase("percentage")){
         if ((int)(Double.parseDouble(cgpt1.getText().toString().replaceAll("%","")))>100 && sp.getSelectedItem().toString().equalsIgnoreCase("percentage")){
             Toast.makeText(getApplicationContext(),"Enter percentage properly.",Toast.LENGTH_LONG).show();

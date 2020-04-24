@@ -37,11 +37,16 @@ public class Personal extends Fragment {
             Toast.makeText(getActivity(),"Email is not valid.",Toast.LENGTH_LONG).show();
             return false;
         }
-
+        if (Pattern.matches("^[0-9]+",phn.getText().toString())!=true){
+            Toast.makeText(getActivity(),"Phone Number is not valid.",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        /*
         if (Pattern.matches("^[A-Z]{1}[A-Za-z,']+\\s[A-Za-z,']+$",name.getText().toString())!=true){
             Toast.makeText(getActivity(),"Enter full name properly.",Toast.LENGTH_LONG).show();
             return false;
         }
+        */
 
         return true;
     }

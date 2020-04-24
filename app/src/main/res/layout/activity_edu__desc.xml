@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="match_parent"
+android:layout_width="match_parent">
+
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginHorizontal="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".insertion.Prg_Desc">
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    android:layout_above="@+id/obj_sv_btn"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="0dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -187,16 +196,20 @@
             android:orientation="horizontal"
             android:gravity="bottom">
 
-            <Button
-                android:id="@+id/edudone_btn"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="Done"
-                android:textColor="@color/whitecol"
-                android:background="@color/colorPrimary"
-                android:textSize="25dp"/>
+
         </LinearLayout>
 
     </LinearLayout>
 
 </ScrollView>
+
+<Button
+    android:id="@+id/edudone_btn"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_alignParentBottom="true"
+    android:text="Done"
+    android:textColor="@color/whitecol"
+    android:background="@color/colorPrimary"
+    android:textSize="25dp"/>
+</RelativeLayout>

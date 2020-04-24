@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".main_section.Objective">
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_above="@+id/obj_sv_btn"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".main_section.Objective">
         <LinearLayout
             android:layout_marginTop="80dp"
             android:layout_width="match_parent"
@@ -20,12 +31,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Objective:"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -35,26 +46,20 @@
                 android:id="@+id/ed_obj"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            android:gravity="bottom">
-
-            <Button
-                android:id="@+id/obj_sv_btn"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:textColor="@color/whitecol"
-                android:background="@color/widgetsblue"
-                android:text="SAVE"
-                android:textSize="25dp"/>
         </LinearLayout>
 
+    </ScrollView>
 
-    </LinearLayout>
-</ScrollView>
+    <Button
+        android:id="@+id/obj_sv_btn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textColor="@color/whitecol"
+        android:background="@color/colorPrimary"
+        android:text="SAVE"
+        android:textSize="25dp"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

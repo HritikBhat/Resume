@@ -9,6 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_marginTop="80dp"
             android:layout_width="match_parent"
@@ -144,22 +150,23 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            android:gravity="bottom">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom">
 
-            <Button
-                android:id="@+id/psldone_btn"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:textColor="@color/whitecol"
-                android:background="@color/colorPrimary"
-                android:text="Done"
-                android:textSize="25dp"/>
-        </LinearLayout>
+        <Button
+            android:id="@+id/psldone_btn"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:textColor="@color/whitecol"
+            android:background="@color/colorPrimary"
+            android:text="Done"
+            android:textSize="25dp"/>
+    </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

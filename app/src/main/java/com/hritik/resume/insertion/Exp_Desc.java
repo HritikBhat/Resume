@@ -34,7 +34,7 @@ public class Exp_Desc extends AppCompatActivity {
         if (Pattern.matches("[0-9]+",from.getText().toString())!=true || (Pattern.matches("[0-9]+",to.getText().toString())!=true && to.getText().toString().equalsIgnoreCase("present")!=true) ){
             Toast.makeText(getApplicationContext(),"Year is invalid in either section.",Toast.LENGTH_LONG).show();
             return false;}
-
+        /*
         if (Pattern.matches("[A-Za-z0-9,'\\s]+$",name.getText().toString())!=true){
             Toast.makeText(getApplicationContext(),"Enter company name properly.",Toast.LENGTH_LONG).show();
             return false;
@@ -47,7 +47,7 @@ public class Exp_Desc extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Enter post in company properly.",Toast.LENGTH_LONG).show();
             return false;
         }
-
+        */
         return true;
     }
 
