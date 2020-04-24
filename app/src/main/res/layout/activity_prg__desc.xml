@@ -44,7 +44,7 @@ android:layout_width="match_parent">
 
                 <EditText
                     android:id="@+id/prg_name"
-                    android:layout_width="350dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -73,7 +73,7 @@ android:layout_width="match_parent">
 
                 <EditText
                     android:id="@+id/prg_tech"
-                    android:layout_width="350dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -102,7 +102,7 @@ android:layout_width="match_parent">
 
                 <EditText
                     android:id="@+id/prg_desc"
-                    android:layout_width="350dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:textStyle="bold" />

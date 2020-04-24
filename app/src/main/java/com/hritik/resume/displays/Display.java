@@ -256,11 +256,11 @@ public class Display extends AppCompatActivity {
     private String education_Task(){
         String name,city,deg,year,type1,ptcg;String st="";
         Cursor cursor=getTabledata("edu");
-        if (cursor!=null) {
-            //cursor.moveToFirst();
-            if (cursor.getCount() == 0) {
-                return "";
-            }
+        if (cursor.getCount() == 0) {
+            return "";
+        }
+        //cursor.moveToFirst();
+        while (cursor.moveToNext()) {
                 //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
                 name = cursor.getString(cursor.getColumnIndex("name"));
                 city = cursor.getString(cursor.getColumnIndex("city"));
