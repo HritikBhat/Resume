@@ -240,35 +240,51 @@ public class Display2 extends AppCompatActivity {
     private String personal_Task(){
         String nm,ad,ph,em,db;
         Cursor cursor=getTabledata("psl");
-        cursor.moveToFirst();
-        nm=cursor.getString(cursor.getColumnIndex("name"));
-        ad=cursor.getString(cursor.getColumnIndex("addr"));
-        ph=cursor.getString(cursor.getColumnIndex("phone"));
-        em=cursor.getString(cursor.getColumnIndex("email"));
-        db=cursor.getString(cursor.getColumnIndex("dob"));
-        cursor.close();
-        return web_Personal(nm,ad,ph,em,db);
+        if(cursor.getCount()==0){
+            return "";
+        }
+        else {
+            cursor.moveToFirst();
+            nm = cursor.getString(cursor.getColumnIndex("name"));
+            ad = cursor.getString(cursor.getColumnIndex("addr"));
+            ph = cursor.getString(cursor.getColumnIndex("phone"));
+            em = cursor.getString(cursor.getColumnIndex("email"));
+            db = cursor.getString(cursor.getColumnIndex("dob"));
+            cursor.close();
+            return web_Personal(nm, ad, ph, em, db);
+        }
     }
     private String objective_Task(){
         String desc;
         Cursor cursor=getTabledata("obj");
+        if(cursor.getCount()==0){
+            return "";
+        }
+        else{
         cursor.moveToFirst();
         desc=cursor.getString(cursor.getColumnIndex("obj_desc"));
         cursor.close();
         return web_Objective(desc);
+        }
     }
     private String declaration_Task(){
         String desc;
         Cursor cursor=getTabledata("dec");
+        if(cursor.getCount()==0){
+            return "";
+        }
+        else{
         cursor.moveToFirst();
         desc=cursor.getString(cursor.getColumnIndex("dec_desc"));
         cursor.close();
-        return web_Declaration(desc);
+        return web_Declaration(desc);}
     }
     private String achievement_Task(){
         String desc;String st="";
         Cursor cursor=getTabledata("ach");
-        if (cursor!=null || cursor.getCount()!=0) {
+        if(cursor.getCount()==0){
+            return "";
+        }
             //cursor.moveToFirst();
             while (cursor.moveToNext()) {
                 //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
@@ -281,18 +297,15 @@ public class Display2 extends AppCompatActivity {
                     "     </div>\n" +
                     "     <hr>\n";
             return st;
-        }
-        else
-        {
-            return "";
-        }
     }
     private String skill_Task(){
         String desc;String st="";
         Cursor cursor=getTabledata("sk");
         //cursor.moveToFirst();
-        if (cursor!=null || cursor.getCount()!=0) {
-            while (cursor.moveToNext()) {
+        if(cursor.getCount()==0){
+            return "";
+        }
+        while (cursor.moveToNext()) {
                 //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
                 desc = cursor.getString(cursor.getColumnIndex("sk_desc"));
                 st += web_Skill(desc);
@@ -304,16 +317,15 @@ public class Display2 extends AppCompatActivity {
                     "     <hr>\n" +
                     "     <br>";
             return st;
-        }
-        else
-        {return "";}
     }
 
     private String project_Task(){
         String name,tech,desc;String st="";
         Cursor cursor=getTabledata("prg");
+        if(cursor.getCount()==0){
+            return "";
+        }
         //cursor.moveToFirst();
-        if (cursor!=null || cursor.getCount()!=0) {
             int count = cursor.getCount();
             for (int i = 1; i <= count; i++) {
                 cursor.moveToNext();
@@ -331,16 +343,14 @@ public class Display2 extends AppCompatActivity {
                     "  <br>\n" +
                     "  <hr>\n";
             return st;
-        }
-        else{
-            return "";
-        }
     }
 
     private String education_Task(){
         String name,city,deg,year,type1,ptcg;String st="";
         Cursor cursor=getTabledata("edu");
-        if (cursor!=null || cursor.getCount()!=0) {
+        if(cursor.getCount()==0){
+            return "";
+        }
             int count = cursor.getCount();
             for (int i = 1; i <= count; i++) {
                 cursor.moveToNext();
@@ -364,48 +374,45 @@ public class Display2 extends AppCompatActivity {
                     "  <hr>\n" +
                     "     <br>";
             return st;
-        }
-        else{
-            return "";
-        }
     }
 
-    private String internship_Task(){
-        String name,city,year,desc;String st="";
-        Cursor cursor=getTabledata("intr");
-        if (cursor!=null || cursor.getCount()!=0) {
-            //cursor.moveToFirst();
-            int count = cursor.getCount();
-            for (int i = 1; i <= count; i++) {
-                cursor.moveToNext();
-                //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
-                name = cursor.getString(cursor.getColumnIndex("name"));
-                city = cursor.getString(cursor.getColumnIndex("city"));
-                year = cursor.getString(cursor.getColumnIndex("tfrom")) + " - " + cursor.getString(cursor.getColumnIndex("tto"));
-                desc = cursor.getString(cursor.getColumnIndex("intr_desc"));
-                st += web_Internship(name, city, year, desc);
-                if (i != count && count!=1) {
-                    st += "<hr id=\"small-hr\">\n" +
-                            "      <br>";
-                }
-            }
-            cursor.close();
-            st += "</div>\n" +
-                    "  </div>\n" +
-                    "<br>\n" +
-                    "<hr>\n" +
-                    "  <br>";
-            return st;
-        }
-        else{
+    private String internship_Task() {
+        String name, city, year, desc;
+        String st = "";
+        Cursor cursor = getTabledata("intr");
+        if (cursor.getCount() == 0) {
             return "";
         }
+        //cursor.moveToFirst();
+        int count = cursor.getCount();
+        for (int i = 1; i <= count; i++) {
+            cursor.moveToNext();
+            //System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+            name = cursor.getString(cursor.getColumnIndex("name"));
+            city = cursor.getString(cursor.getColumnIndex("city"));
+            year = cursor.getString(cursor.getColumnIndex("tfrom")) + " - " + cursor.getString(cursor.getColumnIndex("tto"));
+            desc = cursor.getString(cursor.getColumnIndex("intr_desc"));
+            st += web_Internship(name, city, year, desc);
+            if (i != count && count != 1) {
+                st += "<hr id=\"small-hr\">\n" +
+                        "      <br>";
+            }
+        }
+        cursor.close();
+        st += "</div>\n" +
+                "  </div>\n" +
+                "<br>\n" +
+                "<hr>\n" +
+                "  <br>";
+        return st;
     }
 
     private String experience_Task(){
         String name,city,post,year,desc;String st="";
         Cursor cursor=getTabledata("exp");
-        if(cursor!=null || cursor.getCount()!=0) {
+        if(cursor.getCount()==0){
+            return "";
+        }
             //if (cursor.getCount()<1){return "";}
             //cursor.moveToFirst();
             int count = cursor.getCount();
@@ -430,10 +437,6 @@ public class Display2 extends AppCompatActivity {
                     "<hr>\n" +
                     "  <br>";
             return st;
-        }
-        else{
-            return "";
-        }
     }
 
 

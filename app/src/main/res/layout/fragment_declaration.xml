@@ -5,68 +5,71 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_height="match_parent"
 android:layout_width="match_parent">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:scrollbars="none"
-    android:layout_above="@+id/obj_sv_btn"
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp"
-    android:layout_alignParentTop="true"
-    android:layout_marginTop="0dp"
-    android:layout_marginBottom="0dp">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".main_section.Declaration">
-        <LinearLayout
-            android:layout_marginTop="80dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/print1"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="0dp"
+        android:scrollbars="none">
 
-            <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".main_section.Declaration">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Declaration:"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
+                android:layout_marginTop="80dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/ed_dec"
-                android:layout_width="350dp"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Declaration:"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/dn_btn"
-                android:layout_width="300dp"
-                android:text="Save"
-                android:textColor="@color/whitecol"
-                android:background="@drawable/custom_main_btn2"
+                <EditText
+                    android:id="@+id/ed_dec"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25dp" />
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-</ScrollView>
+                <Button
+                    android:id="@+id/dn_btn"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_main_btn2"
+                    android:text="Save"
+                    android:textColor="@color/whitecol"
+                    android:textSize="25dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 <Button
     android:id="@+id/print1"
