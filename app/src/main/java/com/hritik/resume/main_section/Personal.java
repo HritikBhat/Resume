@@ -1,6 +1,7 @@
 package com.hritik.resume.main_section;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,31 +9,39 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hritik.resume.MyHelper;
 import com.hritik.resume.R;
 
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 public class Personal extends Fragment {
     View view;
-    EditText name,addr,phn,dobe,eml;
+    EditText name,addr,phn,eml;
+    TextView dobdisplay;
     String nm,ph,ad,db,em;
     Button done;
+    ImageButton dobe;
 
     private Boolean isValid(){
-
-        if (Pattern.matches("^[0-3]{2}[.][0-9]{2}[.][0-9]{4}$",dobe.getText().toString())!=true){
+        /*
+        if (Pattern.matches("^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$",dobe.getText().toString())!=true){
             Toast.makeText(getActivity(),"Date should be in DD.MM.YYYY format.",Toast.LENGTH_LONG).show();
             return false;}
+            */
         if (Pattern.matches("^[0-9A-Za-z][0-9A-Za-z'.\"+$%_#*]{1,62}@[0-9A-Za-z.]{1,30}[.][A-Za-z]{1,5}$",eml.getText().toString())!=true){
             Toast.makeText(getActivity(),"Email is not valid.",Toast.LENGTH_LONG).show();
             return false;
@@ -80,7 +89,7 @@ public class Personal extends Fragment {
             insertValues.put("addr", addr.getText().toString());
             insertValues.put("phone", phn.getText().toString());
             insertValues.put("email", eml.getText().toString());
-            insertValues.put("dob", dobe.getText().toString());
+            insertValues.put("dob", dobdisplay.getText().toString());
             long rows = db.insert("psl", null, insertValues);
             Toast.makeText(act, "Saved!", Toast.LENGTH_LONG).show();
         }
@@ -113,8 +122,30 @@ public class Personal extends Fragment {
             phn.setText(ph);
             eml = view.findViewById(R.id.psl_email);
             eml.setText(em);
+            dobdisplay = view.findViewById(R.id.psl_dobdisplay);
+            dobdisplay.setText(db);
+            final DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month += 1;
+                    String date = dayOfMonth + "." + month + "." + year;
+                    dobdisplay.setText(date);
+                }
+            };
             dobe = view.findViewById(R.id.psl_dob);
-            dobe.setText(db);
+            dobe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Calendar cal = Calendar.getInstance();
+                    int year = cal.get(Calendar.YEAR);
+                    int month = cal.get(Calendar.MONTH);
+                    int day = cal.get(Calendar.DAY_OF_MONTH);
+                    DatePickerDialog dialog = new DatePickerDialog(getActivity(),
+                            R.style.TimePickerTheme, mDateSetListener,
+                            year, month, day);
+                    dialog.show();
+                }
+            });
             done = view.findViewById(R.id.psldone_btn);
             done.setOnClickListener(new View.OnClickListener() {
                 @Override
