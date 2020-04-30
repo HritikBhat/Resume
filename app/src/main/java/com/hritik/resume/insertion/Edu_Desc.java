@@ -56,15 +56,29 @@ public class Edu_Desc extends AppCompatActivity {
         }
          */
         if (sp.getSelectedItem().toString().equalsIgnoreCase("percentage")){
-        if ((int)(Double.parseDouble(cgpt1.getText().toString().replaceAll("%","")))>100 && sp.getSelectedItem().toString().equalsIgnoreCase("percentage")){
-            Toast.makeText(getApplicationContext(),"Enter percentage properly.",Toast.LENGTH_LONG).show();
-            return false;
-        }}
+            try {
+                if ((int) (Double.parseDouble(cgpt1.getText().toString().replaceAll("%", ""))) > 100 && sp.getSelectedItem().toString().equalsIgnoreCase("percentage")) {
+                    Toast.makeText(getApplicationContext(), "Enter percentage properly.", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+            }
+            catch (Exception e){
+                Toast.makeText(getApplicationContext(), "Enter percentage properly.", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
         if (sp.getSelectedItem().toString().equalsIgnoreCase("cgpa")){
+            try{
         if (Double.parseDouble(cgpt1.getText().toString())>Double.parseDouble(cgpt2.getText().toString()) && sp.getSelectedItem().toString().equalsIgnoreCase("cgpa")){
             Toast.makeText(getApplicationContext(),"Enter cgpa properly.",Toast.LENGTH_LONG).show();
             return false;
-        }}
+        }
+            }
+        catch (Exception e){
+                Toast.makeText(getApplicationContext(), "Enter cgpa properly.", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
         return true;
     }
     protected boolean getLengthStatus(){
